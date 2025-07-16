@@ -6,45 +6,22 @@
 \usepackage{setspace}
 \usepackage{parskip}
 \usepackage{hyperref}
-\usepackage{graphicx}
 \usepackage{float}
 \usepackage{booktabs}
-\newcommand{\comm}[1]{def}
 
 \geometry{a4paper, margin=1in}
 \setstretch{1.2}
 
-% Title page setup
-\title{
-    \Huge\textbf{A Systematic Trading Approach from Data Mining to Live Deployment}\\
-    \vspace{1cm}
-    \Large Documentation\\
-    \vspace{2cm}
-}
-
-\author{
-    \Large Submitted by:\\
-    \vspace{0.5cm}
-    \textbf{Juri Stoffers}\\
-    \vspace{2cm}
-    \Large Supervised by:\\
-    \vspace{0.5cm}
-    \textbf{Dr. Geoffrey Ostrin}\\
-    \vspace{2cm}
-}
-
+\title{\Huge A Systematic Trading Approach from Data Mining to Live Deployment\\\vspace{1cm}\Large Documentation}
+\author{\Large Submitted by:\\\vspace{0.5cm}\textbf{Juri Stoffers}\\\vspace{2cm}\Large Supervised by:\\\vspace{0.5cm}\textbf{Dr. Geoffrey Ostrin}}
 \date{\Large \today}
 
 \begin{document}
-
-% Create title page
+\pagenumbering{gobble}
 \begin{titlepage}
 \maketitle
-\thispagestyle{empty}
 \end{titlepage}
 
-% Add a blank page after title
 \newpage
-\null
-\thispagestyle{empty}
-\newpage
+\pagenumbering{arabic}
+\end{document}
