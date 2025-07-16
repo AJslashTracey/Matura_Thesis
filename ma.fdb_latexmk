@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1752674099.4505 "/Users/juristoffers/Desktop/GitHub/Untitled/Matura_Thesis/ma.tex" "ma.pdf" "ma" 1752674100.02789 0
-  "/Users/juristoffers/Desktop/GitHub/Untitled/Matura_Thesis/ma.tex" 1752674099.27149 3708 6e32f58c897218bf787d2f6a3c0ad4c9 ""
+["pdflatex"] 1752674202.56094 "/Users/juristoffers/Desktop/GitHub/Untitled/Matura_Thesis/ma.tex" "ma.pdf" "ma" 1752674203.1366 0
+  "/Users/juristoffers/Desktop/GitHub/Untitled/Matura_Thesis/ma.tex" 1752674202.36902 3820 7967c0468cc9204fcd28cc52eb7e5552 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -84,10 +84,10 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1743709780 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1743709729 3345743 a3ced839d75efeff1f35965e5076c360 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "ma.aux" 1752674099.98134 710 7ddc65a66559517012860001463c142c "pdflatex"
-  "ma.out" 1752674099.98219 497 2ad47f4170820ff0f9bd18a1890785aa "pdflatex"
-  "ma.tex" 1752674099.27149 3708 6e32f58c897218bf787d2f6a3c0ad4c9 ""
-  "ma.toc" 1752674099.9825 343 460d0c3545a86a5ede993c8fb6ccde46 "pdflatex"
+  "ma.aux" 1752674203.0925 710 7ddc65a66559517012860001463c142c "pdflatex"
+  "ma.out" 1752674203.09286 497 2ad47f4170820ff0f9bd18a1890785aa "pdflatex"
+  "ma.tex" 1752674202.36902 3820 7967c0468cc9204fcd28cc52eb7e5552 ""
+  "ma.toc" 1752674203.09319 343 460d0c3545a86a5ede993c8fb6ccde46 "pdflatex"
   (generated)
   "ma.aux"
   "ma.log"
