@@ -5,6 +5,6 @@
 \contentsline {subsection}{\numberline {2.3}Research documentation}{3}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}Trading algorithm}{3}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}Live dashboard}{3}{subsection.2.5}%
-\contentsline {section}{\numberline {3}Bitcoin}{4}{section.3}%
+\contentsline {section}{\numberline {3}Theoretical Background}{4}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Related Work}{5}{subsection.3.1}%
 \contentsline {section}{\numberline {4}Methodology}{6}{section.4}%
