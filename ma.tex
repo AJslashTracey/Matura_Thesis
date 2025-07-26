@@ -172,11 +172,23 @@ Throughout this process, the focus remains on consistency and measurability. Unl
 
 
 
+\newpage
+\section{Methodology}
+
+\subsection{Project Overview}
+The aim of this project was to design, test, and deploy a fully automated trading strategy for Bitcoin. The development process consisted of four main stages. First, historical price data was collected through a public exchange API and fetched in one minute intervals stored inside a database on a PAAS \footnote{Stands for Platform as a service and it's a cloud computing model which gives developers a platform to host their applications so that they are globably accesable on the internet and run 24/7}. In the second stage, a simple rule-based strategy was defined based on technical indicators, with clearly specified entry and exit conditions. Next, the strategy was backtested on several months of historical data using a custom Python-based framework to evaluate its performance across different market conditions. Finally, if the results met predefined criteria (e.g. acceptable loses, stable returns), the strategy was deployed live on a cloud server that connects to the exchange and executes trades automatically in real time. Each stage of the process is documented in detail in the following sections.
+
+\subsection{Data collection}
+I decided to create my own dataset since it comes with one major advantage and that is that I can test things which have a lower probability to already have been tested on, so I increase my chance of finding something new. \href{https://github.com/AJslashTracey/OBDeltaData}{Here} are some examples and a live website connected to my database
 
 
+\subsection{Strategy logic}
+Identifying a profitable strategy is arguably the most challenging part of the entire process. To support this, I developed a custom backtesting and simulation framework that integrates several Python libraries and extends them with custom features. This setup allows me to efficiently test different strategies and evaluate their performance on randomly sampled trade sequences. \href{https://github.com/AJslashTracey/signal_search_strategy}{Custom backtesting/simulation framework}
 
 
-
+\subsubsection{Backtesting Framework}
+The backtesting frame work I developed uses vector bt, this is a Python libary which allows you to carry out backtest on timeseries dataset you can define the enty/exit signal by yourself and get a lot of valuable infromation from it back.
+When I run a backtest I will test different timeperiods and different sample sizes the sample size is just a percentage of the signals we have but randomly selected, so for example if we have 100 entry signals we test on 20 randomly selected signals 100 times and calculate the average return
 \newpage
 \subsection{Related Work}
 Discussion of related work.
