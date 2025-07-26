@@ -12,9 +12,8 @@
 \usepackage{subcaption} % in your preamble
 
 % Image optimization settings
-\pdfminorversion=7
-\pdfobjcompresslevel=3
-\pdfcompresslevel=9
+% Configure image compression for XeTeX
+\setkeys{Gin}{draft=false}
 
 \geometry{a4paper, margin=1in}
 \setstretch{1.2}
@@ -35,12 +34,14 @@
 \date{\Large \today}
 
 \begin{document}
-\pagenumbering{gobble}
+
+% Title page (no page number)
 \begin{titlepage}
 \maketitle
 \end{titlepage}
 
-\newpage
+% Abstract (roman numerals)
+\pagenumbering{roman}
 \begin{abstract}
     \begin{center}
         Trading is the act of buying and selling and asset like Stocks or Cryptocurrencies with a goal to make a profit. Meanwhile trading has become pretty popular through social media with a lot of hype and described as an easy way to get rich. While trading is one of the most difficult jobs in the world for serveral reasons. Learnging to overcome basic human instincts and emotions is just one of the many challenges.
@@ -48,12 +49,11 @@
     \end{center}
 \end{abstract}
 
-
-\newpage
-\pagenumbering{roman}
+% Table of contents (continue roman numerals)
 \tableofcontents
-\newpage
+\clearpage
 
+% Main content (arabic numerals)
 \pagenumbering{arabic}
 
 
