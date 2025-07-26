@@ -187,8 +187,26 @@ Identifying a profitable strategy is arguably the most challenging part of the e
 
 
 \subsubsection{Backtesting Framework}
-The backtesting frame work I developed uses vector bt, this is a Python libary which allows you to carry out backtest on timeseries dataset you can define the enty/exit signal by yourself and get a lot of valuable infromation from it back.
-When I run a backtest I will test different timeperiods and different sample sizes the sample size is just a percentage of the signals we have but randomly selected, so for example if we have 100 entry signals we test on 20 randomly selected signals 100 times and calculate the average return
+The backtesting frame work I developed uses vector bt as basis, this is a Python libary which allows you to carry out backtest on timeseries dataset you can define the enty/exit signal by yourself and get a lot of valuable infromation from it back.
+When I run a backtest I will test different timeperiods and different sample sizes the sample size is just a percentage of the signals we have but randomly selected, so for example if we have 100 entry signals we test on 20 randomly selected signals 100 times and calculate the average return.
+Once the backtest is finished which can take up to 10 minutes if we use different holding periods for the trade and different sample sizes.
+
+\textbf{Example:}
+
+\begin{verbatim}
+    #Example for entry signals in the code
+    outlier_mask = (df['trend'] == 'uptrend') % (df['is_outlier'] == 1) 
+\end{verbatim}
+
+Then I test the strategy on one month of data to evaluate whether it shows any potential. I consider a strategy to have potential if it is around break-even or slightly profitable and achieves a Sharpe ratio between 1 and 2.\footnote{The Sharpe ratio is a measure of risk-adjusted return. It compares the average return of a strategy to its volatility. A higher Sharpe ratio indicates a better balance between risk and return. A Sharpe ratio between 1 and 2 is considered decent in most financial contexts.}
+
+
+\textbf{Results:}
+
+
+
+
+
 \newpage
 \subsection{Related Work}
 Discussion of related work.

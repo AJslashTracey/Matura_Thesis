@@ -13,5 +13,5 @@
 \contentsline {subsection}{\numberline {4.2}Data collection}{6}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Strategy logic}{6}{subsection.4.3}%
 \contentsline {subsubsection}{\numberline {4.3.1}Backtesting Framework}{6}{subsubsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.4}Related Work}{7}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Methodology}{8}{section.5}%
+\contentsline {subsection}{\numberline {4.4}Related Work}{8}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Methodology}{9}{section.5}%
