@@ -127,9 +127,51 @@ This will just be a website where you can see the live performance of the tradin
 
 \newpage
 
-\section{Theoretical background}
-\subsection{Algorithmic trading}
-So when I am speaking of trading I mean the buying and selling of assets at an exchangdfsdfn
+\section{Theoretical Background}
+\subsection{Digitalisation of Trading}
+So when I am speaking of trading I mean the buying and selling of assets at an exchange. Before the digitalisation traders meet at exchanges to trade where they communicated with shouting and hand signals under each other to buy and sell assets from each other. The hand signals allowed the traders to communicate price, quantity and the type of order\footnote{An order is an instruction given by a trader to buy or sell a specific quantity of an asset, usually including details like the price and type of transaction (e.g., buy or sell).}
+they wanted to set up.  All of this happened on so called "Trading Pits" which were located inside of exchanges.
+
+
+In the late 20th century electronical systems gradualy replaced the communication used insde of the Trading Pit. Electronical systems brought a lot of advantages with them as orders could be executed faster, more cheaply and with improved record-keeping. Which opened the world of trading to a broader range of market participants. 
+As electronical trading grew, the use of technical analysis grew too, in short TA, makes use of historical price data where patters can be watched and indicators to forcast price movementes.
+
+Online brokerages enabled individuals to trade based on their own interoretation of TA without the need of giving out a form of physical trading signal.
+
+With increased computing power, large institutions use trading algorithms which are automated programs that execute trades based on pre-set criteria, this could be various forms of technical analysis, price arbitrage\footnote{Arbitrage is a trading strategy that involves simultaneously buying and selling the same asset in different markets to profit from price differences. For example, if an asset is cheaper on one exchange than on another, a trader can buy it low and sell it high almost instantly.} or news events and a lot more.
+
+
+Besides institutions there are also individual traders which have a systematic/quantitativ or discretionary approach. While a systematic trader just acts based on fixed criteria and a discretionary trader trades based on his judgment, experience and analysis. The main difference is that a discretionary trader can not automate his trading strategy while a systematic trader is able to do that since he trades on fixed entry conditions to open up a trade.
+
+
+
+
+\newpage
+
+\subsection{Development of a Systematic Strategy}
+
+
+The development of a systematic strategy typically follows several key steps:
+
+\textbf{Idea Generation:}  
+The process often begins with a hypothesis. For example, a trader might assume that when Bitcoin rises sharply within a short time, it tends to continue rising for a few more hours — this would be a form of momentum. The idea must be simple enough to be coded, yet specific enough to be tested.
+
+\textbf{Rule Definition:}  
+Once the idea is clear, it is translated into precise entry and exit rules. For instance: "Buy Bitcoin if the 15-minute price increases by more than 1.5\% compared to the previous 60 minutes." Rules also include when to close a position, such as "Sell if the price drops 1\% below the entry."
+
+\textbf{Backtesting:}  
+The rules are then tested on historical data. This allows the developer to evaluate how the strategy would have performed in the past. Key performance metrics such as profit, win rate, drawdown, and Sharpe ratio are used to assess quality.
+
+\textbf{Optimization and Robustness Testing:}  
+After initial tests, parameters can be adjusted. For example, changing the percentage thresholds or time windows. However, this step must be handled with care — overfitting the strategy to past data may cause it to fail in real markets.
+
+\textbf{Live Execution:}  
+If the backtesting results are promising and the strategy appears robust, it can be deployed live. Execution is handled by a bot or script running on a server, which listens to market data and acts as soon as the conditions are met.
+
+Throughout this process, the focus remains on consistency and measurability. Unlike human decision-making, a systematic strategy must behave identically under the same conditions. This makes it possible to evaluate, improve and automate trading in a transparent way.
+
+
+
 
 
 
