@@ -2,23 +2,74 @@
     "latex-workshop.latex.outDir": "%DIR%",
     "latex-workshop.latex.tools": [
         {
-            "name": "latexmk",
-            "command": "/Library/TeX/texbin/latexmk",
+            "name": "xelatex",
+            "command": "xelatex",
             "args": [
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "-pdf",
                 "%DOC%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
             ]
         }
     ],
     "latex-workshop.latex.recipes": [
         {
-            "name": "latexmk 🔃",
+            "name": "xelatex 🔃",
             "tools": [
-                "latexmk"
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "pdflatex 🔃",
+            "tools": [
+                "pdflatex",
+                "pdflatex"
             ]
         }
-    ]
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk",
+        "*.snm",
+        "*.nav",
+        "*.vrb"
+    ],
+    "latex-workshop.latex.autoClean.run": "onFailed",
+    "latex-workshop.latex.recipe.default": "xelatex 🔃"
 } 
