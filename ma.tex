@@ -9,7 +9,12 @@
 \usepackage{float}
 \usepackage{booktabs}
 \usepackage{glossaries}
+\usepackage{subcaption} % in your preamble
 
+% Image optimization settings
+\pdfminorversion=7
+\pdfobjcompresslevel=3
+\pdfcompresslevel=9
 
 \geometry{a4paper, margin=1in}
 \setstretch{1.2}
@@ -202,6 +207,23 @@ Then I test the strategy on one month of data to evaluate whether it shows any p
 
 
 \textbf{Results:}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\linewidth]{imgs/example_backtest_for_thesis.png}
+        \caption{First image}
+        \label{fig:image1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\linewidth]{imgs/example_for_thesis_v2.png}
+        \caption{Second image}
+        \label{fig:image2}
+    \end{subfigure}
+    \caption{Comparison of two images}
+    \label{fig:side_by_side}
+\end{figure}
 
 
 

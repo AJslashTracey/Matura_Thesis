@@ -8,6 +8,7 @@
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
+                "-shell-escape",
                 "%DOC%"
             ]
         },
@@ -18,6 +19,7 @@
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
+                "-shell-escape",
                 "%DOC%"
             ]
         },
@@ -71,5 +73,10 @@
         "*.vrb"
     ],
     "latex-workshop.latex.autoClean.run": "onFailed",
-    "latex-workshop.latex.recipe.default": "xelatex 🔃"
+    "latex-workshop.latex.recipe.default": "xelatex 🔃",
+    "latex-workshop.view.pdf.invertMode.enabled": false,
+    "latex-workshop.view.pdf.zoom": "page-width",
+    "latex-workshop.view.pdf.scrollMode": 1,
+    "latex-workshop.latex.build.clearLog.everyRecipe.enabled": true,
+    "latex-workshop.latex.build.forceRecipeUsage": true
 } 
