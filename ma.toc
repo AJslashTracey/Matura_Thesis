@@ -7,11 +7,12 @@
 \contentsline {subsection}{\numberline {2.5}Live dashboard}{3}{subsection.2.5}%
 \contentsline {section}{\numberline {3}Theoretical Background}{4}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Digitalisation of Trading}{4}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Development of a Systematic Strategy}{5}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Methodology}{6}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Project Overview}{6}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Data collection}{6}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Strategy logic}{6}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}Backtesting Framework}{6}{subsubsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.4}Related Work}{8}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Methodology}{9}{section.5}%
+\contentsline {subsection}{\numberline {3.2}Efficient markets}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Development of a Systematic Strategy}{6}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Methodology}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Project Overview}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Data collection}{7}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Strategy logic}{7}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Backtesting Framework}{7}{subsubsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.4}Related Work}{9}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Methodology}{10}{section.5}%
