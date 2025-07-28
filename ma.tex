@@ -151,11 +151,14 @@ Besides institutions there are also individual traders which have a systematic/q
 
 \newpage
 \subsection{Efficient markets}
-The efficient market hypothesis states that todays trading markets price in every kind of infromation available privat and public. This basically means it is impossible to beat the market.  \footnote[1]{Beating the market means achieving a higher ROI ("Return on Investment") than a certain benchmark. A common benchmark is the S\&P 500, which is an index including the 500 largest companies listed on U.S. stock exchanges. The S\&P 500 has had an average yearly return of about 10.33\% since 1957}
+The efficient market hypothesis states that todays trading markets price in every kind of infromation available. This basically means it is impossible to beat the market.  \footnote[1]{Beating the market means achieving a higher ROI ("Return on Investment") than a certain benchmark. A common benchmark is the S\&P 500, which is an index including the 500 largest companies listed on U.S. stock exchanges. The S\&P 500 has had an average yearly return of about 10.33\% since 1957}
 
-If this was true in practice, then the acitivy of discretionary trading or systematic trading algorithms would not work.  Real world markets are not only influenced by information also by normal intuitive human behaviour. Emotion disables people to act on signals. There are commonly known strategies which are profitable the only difficult thing about these strategies is to act on their signals, nobody wants to buy a heavy red day when there is a lot of fear in the market. The EMH assumes that people act rationa 
+If this was true in practice, then the acitivy of discretionary trading or systematic trading algorithms would not work.  Real world markets are not only influenced by information also by normal intuitive human behaviour. Emotion disables people to act on signals. There are commonly known strategies which are profitable the only difficult thing about these strategies is to act on their signals, nobody wants to buy a heavy red day when there is a lot of fear in the market. 
 
-While the efficient market hypothesis can be applied in the higher timeframes and mostly is true short term inefficiencies. There still are a lot of inefficiencies up to date and from the stock market to the crypto market which can be used to make if you have a strategie that allow you to act on them and use these inefficiencies as as an opportunity
+To make things even better depending on where you trade market can change in efficient. But still some of the most valuable assets like stocks, gold and Bitcoin prices are a reflection of human emotion pricing in infromation. Especially now with Trump in office a lot of volatily came in with big oppertunities even on the higher time frame where the EMH is pretty accurate.  
+
+Depending on timeframe there are still a lot inefficient prices from which individuals can make a profit from. I will try to act on short term inefficient with my trading algorithm because I only have about one month for the live test and it would not make sense to run an algorithm which hold a trade over weeks and takes a trade every two months. In addtion the initial idea I had was based on short term signals.
+
 
 
 
@@ -196,13 +199,13 @@ I decided to create my own dataset since it comes with one major advantage and t
 
 
 \subsection{Strategy logic}
-Identifying a profitable strategy is arguably the most challenging part of the entire process. To support this, I developed a custom backtesting and simulation framework that integrates several Python libraries and extends them with custom features. This setup allows me to efficiently test different strategies and evaluate their performance on randomly sampled trade sequences. \href{https://github.com/AJslashTracey/signal_search_strategy}{Custom backtesting/simulation framework}
+Identifying a profitable strategy is arguably the most challenging part of the entire process. To support this, I developed a custom backtesting and simulation framework that integrates several Python libraries and extends them with custom features. This setup allows me to efficiently test different strategies and evaluate their performance on randomly sampled trade sequences. 
 
 
 \subsubsection{Backtesting Framework}
 The backtesting frame work I developed uses vector bt as basis, this is a Python libary which allows you to carry out backtest on timeseries dataset you can define the enty/exit signal by yourself and get a lot of valuable infromation from it back.
 When I run a backtest I will test different timeperiods and different sample sizes the sample size is just a percentage of the signals we have but randomly selected, so for example if we have 100 entry signals we test on 20 randomly selected signals 100 times and calculate the average return.
-Once the backtest is finished which can take up to 10 minutes if we use different holding periods for the trade and different sample sizes.
+Once the backtest is finished which can take up to 10 minutes if we use different holding periods for the trade and different sample sizes.  \href{https://github.com/AJslashTracey/signal_search_strategy}{Custom backtesting/simulation framework}
 
 \textbf{Example:}
 
