@@ -35,12 +35,12 @@
 
 \begin{document}
 
-% Title page (no page number)
-\begin{titlepage}
+% Title page
+\pagenumbering{gobble}
 \maketitle
-\end{titlepage}
+\clearpage
 
-% Abstract (roman numerals)
+% Abstract
 \pagenumbering{roman}
 \begin{abstract}
     \begin{center}
@@ -48,13 +48,15 @@
         Shortly said humans aren't made to trade so why not let the computer do the work for us. In my Matura thesis I will try to develop a trading strategy that can run autonomously buy and sell Bitcoin with a profit while showhing why trading isn't a free money machine and that you should probably stick with something else if you want to make money and not lose your mind while doing so.
     \end{center}
 \end{abstract}
+\clearpage
 
-% Table of contents (continue roman numerals)
+% Table of contents
 \tableofcontents
 \clearpage
 
-% Main content (arabic numerals)
+% Main content
 \pagenumbering{arabic}
+\setcounter{page}{1}
 
 
 
@@ -195,7 +197,8 @@ Throughout this process, the focus remains on consistency and measurability. Unl
 The aim of this project was to design, test, and deploy a fully automated trading strategy for Bitcoin. The development process consisted of four main stages. First, historical price data was collected through a public exchange API and fetched in one minute intervals stored inside a database on a PAAS \footnote{Stands for Platform as a service and it's a cloud computing model which gives developers a platform to host their applications so that they are globably accesable on the internet and run 24/7}. In the second stage, a simple rule-based strategy was defined based on technical indicators, with clearly specified entry and exit conditions. Next, the strategy was backtested on several months of historical data using a custom Python-based framework to evaluate its performance across different market conditions. Finally, if the results met predefined criteria (e.g. acceptable loses, stable returns), the strategy was deployed live on a cloud server that connects to the exchange and executes trades automatically in real time. Each stage of the process is documented in detail in the following sections.
 
 \subsection{Data collection}
-I decided to create my own dataset since it comes with one major advantage and that is that I can test things which have a lower probability to already have been tested on, so I increase my chance of finding something new. \href{https://github.com/AJslashTracey/OBDeltaData}{Here} are some examples and a live website connected to my database
+
+I chose to create my own dataset because it offers one key advantage: it allows me to experiment with ideas and patterns that are less likely to have been explored before. This increases the chance of discovering something new that might be missed in more commonly used datasets. 
 
 
 \subsection{Strategy logic}
@@ -211,10 +214,10 @@ Once the backtest is finished which can take up to 10 minutes if we use differen
 
 \begin{verbatim}
     #Example for entry signals in the code
-    outlier_mask = (df['trend'] == 'uptrend') % (df['is_outlier'] == 1) 
+    outlier_mask = (df['trend'] == 'uptrend') & (df['is_outlier'] == 1) 
 \end{verbatim}
 
-Then I test the strategy on one month of data to evaluate whether it shows any potential. I consider a strategy to have potential if it is around break-even or slightly profitable and achieves a Sharpe ratio between 1 and 2.\footnote{The Sharpe ratio is a measure of risk-adjusted return. It compares the average return of a strategy to its volatility. A higher Sharpe ratio indicates a better balance between risk and return. A Sharpe ratio between 1 and 2 is considered decent in most financial contexts.}
+Then I test the strategy on one month of data to evaluate whether it shows any potential. I consider a strategy to have potential if it is around break-even \footnote{Break-even is the point where the total profit equals the total loss. In other words, it's the point where the strategy neither makes nor loses money.} or slightly profitable and achieves a Sharpe ratio between 1 and 2.\footnote{The Sharpe ratio is a measure of risk-adjusted return. It compares the average return of a strategy to its volatility. A higher Sharpe ratio indicates a better balance between risk and return. A Sharpe ratio between 1 and 2 is considered decent in most financial contexts.}
 
 
 \textbf{Results:}
