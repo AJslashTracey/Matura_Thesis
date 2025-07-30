@@ -78,5 +78,6 @@
     "latex-workshop.view.pdf.zoom": "page-width",
     "latex-workshop.view.pdf.scrollMode": 1,
     "latex-workshop.latex.build.clearLog.everyRecipe.enabled": true,
-    "latex-workshop.latex.build.forceRecipeUsage": true
+    "latex-workshop.latex.build.forceRecipeUsage": true,
+    "vim.enabled": false
 } 
