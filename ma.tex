@@ -75,7 +75,7 @@ I had no idea what I was getting myself into and if I knew before I would probab
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \section{Introduction}
-The primary object of my thesis is if I am able to develope an autonomous operarating trading algorithm that can generate me a profit. To that end my thesis will cover the entire development cycle, from researching, backtesting strategies and live deployment execution with real money on Bitcoin evaluating the results in the end.
+This thesis explores whether I can develop an autonomous trading algorithm that can generate me a consistent profit. To that end my thesis will cover the entire development cycle, from researching, backtesting strategies and live deployment execution with real money on Bitcoin evaluating the results in the end.
 
 
 The strategy I will try to find should rely on  signals found by analysing historical Bitcoin data. The model will be tested on historical timeseries data.
@@ -117,8 +117,7 @@ To find an strategy we have to first test potential ideas on historical data aft
 
 
 \subsection{Research documentation}
-This is a document where I write down the formulars I used and explain them in detail in adition to the different results I got for different tests I did since it would be to much to write down in the thesis. I decided to to this because I just tested and tried out a lot of different things. it will be written so that you can understand it after reading through my thesis.
-
+Throughout this research, I have documented the formulas used and detailed test results that were too extensive to include in the main thesis. This documentation serves as a companion piece, written to be understandable after reading the main thesis.
 
 
 \subsection{Trading algorithm}
@@ -194,22 +193,41 @@ Throughout this process, the focus remains on consistency and measurability. Unl
 \section{Methodology}
 
 \subsection{Project Overview}
-The aim of this project was to design, test, and deploy a fully automated trading strategy for Bitcoin. The development process consisted of four main stages. First, historical price data was collected through a public exchange API and fetched in one minute intervals stored inside a database on a PAAS \footnote{Stands for Platform as a service and it's a cloud computing model which gives developers a platform to host their applications so that they are globably accesable on the internet and run 24/7}. In the second stage, a simple rule-based strategy was defined based on technical indicators, with clearly specified entry and exit conditions. Next, the strategy was backtested on several months of historical data using a custom Python-based framework to evaluate its performance across different market conditions. Finally, if the results met predefined criteria (e.g. acceptable loses, stable returns), the strategy was deployed live on a cloud server that connects to the exchange and executes trades automatically in real time. Each stage of the process is documented in detail in the following sections.
+The aim of this project was to design, test, and deploy a fully automated trading strategy for Bitcoin. The development process consisted of four main stages. First, historical price data was collected through a public exchange API and fetched in one minute intervals stored inside a database on a PaaS \footnote[1]{Stands for Platform as a service and it's a cloud computing model which gives developers a platform to host their applications so that they are globably accesable on the internet and run 24/7}. In the second stage, a simple rule-based strategy was defined based on technical indicators, with clearly specified entry and exit conditions. Next, the strategy was backtested on several months of historical data using a custom Python-based framework to evaluate its performance across different market conditions. Finally, if the results met predefined criteria (e.g. acceptable loses, stable returns), the strategy was deployed live on a cloud server that connects to the exchange and executes trades automatically in real time. Each stage of the process is documented in detail in the following sections.
 
 \subsection{Data collection}
 
-I chose to create my own dataset because it offers one key advantage: it allows me to experiment with ideas and patterns that are less likely to have been explored before. This increases the chance of discovering something new that might be missed in more commonly used datasets. 
 
 
+
+I chose to create my own dataset because it offers a key advantage: it allows me to experiment with ideas and patterns that are less likely to have been explored before. This increases the chance of discovering something new that might be missed when using more commonly available datasets.
+
+In my dataset, I calculate the 1\%, 2.5\%, and 5\% delta of the order book. Additionally, I include the current Bitcoin price and the current timestamp. The program I wrote collects data by sending API requests \footnote[2]{API stands for Application Programming Interface. It is a tool that allows programs to request and receive specific data from external services in this case, used to fetch real-time Bitcoin price and orderbook data from the coinbase crypto exchange.} to the Coinbase Exchange API at one-minute intervals. It retrieves both the current Bitcoin price and a full snapshot of the order book at that moment. A complete snapshot is necessary to calculate order book deltas at different percentage depths accurately.
+
+The script is hosted on my PaaS where my databse (Postgres) is also hosted where all the data is stored. It has been running 24/7 since March 11, 2025. 
+\href{https://customchart-production.up.railway.app/#}{Live datamining progress}
+
+The orderbook delta is calculated by summing the total value of bid orders $n\%$ below the current price ($P_t$) and subtracting the total value of ask orders that are $n\%$ above ($P_t$).
+\begin{equation*}
+    \Delta_{OB} = \sum_{i=1}^{n} V_{bid_i} - \sum_{i=1}^{n} V_{ask_i}    
+\end{equation*}
+
+
+
+
+\newpage
 \subsection{Strategy logic}
 Identifying a profitable strategy is arguably the most challenging part of the entire process. To support this, I developed a custom backtesting and simulation framework that integrates several Python libraries and extends them with custom features. This setup allows me to efficiently test different strategies and evaluate their performance on randomly sampled trade sequences. 
 
 
-\subsubsection{Backtesting Framework}
 The backtesting frame work I developed uses vector bt as basis, this is a Python libary which allows you to carry out backtest on timeseries dataset you can define the enty/exit signal by yourself and get a lot of valuable infromation from it back.
 When I run a backtest I will test different timeperiods and different sample sizes the sample size is just a percentage of the signals we have but randomly selected, so for example if we have 100 entry signals we test on 20 randomly selected signals 100 times and calculate the average return.
 Once the backtest is finished which can take up to 10 minutes if we use different holding periods for the trade and different sample sizes.  \href{https://github.com/AJslashTracey/signal_search_strategy}{Custom backtesting/simulation framework}
 
+
+
+
+\newpage
 \textbf{Example:}
 
 \begin{verbatim}
@@ -218,7 +236,6 @@ Once the backtest is finished which can take up to 10 minutes if we use differen
 \end{verbatim}
 
 Then I test the strategy on one month of data to evaluate whether it shows any potential. I consider a strategy to have potential if it is around break-even \footnote{Break-even is the point where the total profit equals the total loss. In other words, it's the point where the strategy neither makes nor loses money.} or slightly profitable and achieves a Sharpe ratio between 1 and 2.\footnote{The Sharpe ratio is a measure of risk-adjusted return. It compares the average return of a strategy to its volatility. A higher Sharpe ratio indicates a better balance between risk and return. A Sharpe ratio between 1 and 2 is considered decent in most financial contexts.}
-
 
 \textbf{Results:}
 
