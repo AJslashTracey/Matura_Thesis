@@ -207,7 +207,7 @@ In my dataset, I calculate the 1\%, 2.5\%, and 5\% delta of the order book. Addi
 The script is hosted on my PaaS where my databse (Postgres) is also hosted where all the data is stored. It has been running 24/7 since March 11, 2025. 
 \href{https://customchart-production.up.railway.app/#}{Live datamining progress}
 
-The orderbook delta is calculated by summing the total value of bid orders $n\%$ below the current price ($P_t$) and subtracting the total value of ask orders that are $n\%$ above ($P_t$).
+The orderbook delta is calculated by summing the total value of bid orders $n\%$ below the current price ($P_t$) and subtracting the total value of ask orders that are $n\%$ above the current price ($P_t$).
 \begin{equation*}
     \Delta_{OB} = \sum_{i=1}^{n} V_{bid_i} - \sum_{i=1}^{n} V_{ask_i}    
 \end{equation*}
@@ -223,6 +223,15 @@ Identifying a profitable strategy is arguably the most challenging part of the e
 The backtesting frame work I developed uses vector bt as basis, this is a Python libary which allows you to carry out backtest on timeseries dataset you can define the enty/exit signal by yourself and get a lot of valuable infromation from it back.
 When I run a backtest I will test different timeperiods and different sample sizes the sample size is just a percentage of the signals we have but randomly selected, so for example if we have 100 entry signals we test on 20 randomly selected signals 100 times and calculate the average return.
 Once the backtest is finished which can take up to 10 minutes if we use different holding periods for the trade and different sample sizes.  \href{https://github.com/AJslashTracey/signal_search_strategy}{Custom backtesting/simulation framework}
+
+
+% Smart strategy explination  why a goal is neede¨
+% from where did I take inspiration 
+% book I read
+% testing testing and more testing
+% where could I have done better
+% how do the results macht with the live test
+
 
 
 
