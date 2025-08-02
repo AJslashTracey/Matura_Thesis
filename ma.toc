@@ -11,6 +11,6 @@
 \contentsline {section}{\numberline {3}Methodology}{6}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Project Overview}{6}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Data collection}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Strategy logic}{7}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Designing and Developing Systems}{7}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Related Work}{9}{subsection.3.4}%
 \contentsline {section}{\numberline {4}Methodology}{10}{section.4}%

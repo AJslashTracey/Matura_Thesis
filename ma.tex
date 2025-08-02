@@ -216,16 +216,29 @@ The orderbook delta is calculated by summing the total value of bid orders $n\%$
 
 
 \newpage
-\subsection{Strategy logic}
-Identifying a profitable strategy is arguably the most challenging part of the entire process. To support this, I developed a custom backtesting and simulation framework that integrates several Python libraries and extends them with custom features. This setup allows me to efficiently test different strategies and evaluate their performance on randomly sampled trade sequences. 
+\subsection{Designing and Developing Systems}
 
 
-The backtesting frame work I developed uses vector bt as basis, this is a Python libary which allows you to carry out backtest on timeseries dataset you can define the enty/exit signal by yourself and get a lot of valuable infromation from it back.
-When I run a backtest I will test different timeperiods and different sample sizes the sample size is just a percentage of the signals we have but randomly selected, so for example if we have 100 entry signals we test on 20 randomly selected signals 100 times and calculate the average return.
-Once the backtest is finished which can take up to 10 minutes if we use different holding periods for the trade and different sample sizes.  \href{https://github.com/AJslashTracey/signal_search_strategy}{Custom backtesting/simulation framework}
+The most difficult part of developing a trading algorithm is finding a strategy that is actually worth integrating. As explained in the Efficient Markets section, it is in principle possible to find a strategy that generates profit. The problem is that finding a strategy which consistently makes money and outperforms the market is still extremely difficult.
+
+Before I start searching, I need to define what I am searching for. To do this, I use the S.M.A.R.T. goal framework (Specific, Measurable, Attainable, Relevant, and Time-bound), as described in the book \href{https://www.amazon.com/Building-Winning-Algorithmic-Trading-Systems/dp/1118778987}{\textit{Building Winning Algorithmic Trading Systems}} by Kevin J. Davey.
+
+\subsubsection*{Goals}
+\begin{itemize}
+    \item Two months allocated for finding a strategy
+    \item Strategy operates on the Bitcoin/USD pair using \href{https://hyperfoundation.org/}{Hyperliquid}
+    \item Target Sharpe ratio between 1 and 2 \footnote{The Sharpe ratio is a measure of risk-adjusted return. It compares the average return of a strategy to its volatility. A higher Sharpe ratio indicates a better balance between risk and return. A Sharpe ratio between 1 and 2 is considered decent in most financial contexts.}
+    \item Approximately 20 trades per month
+    \item No strict requirement to outperform the market; focus is on stability and consistency
+\end{itemize}
 
 
-% Smart strategy explination  why a goal is neede¨
+
+Starting of with searching for a potential strategy I already had a few ideas coming from discretionary trading approaches where I saw a potential to implement as a systemmatic set of rules. Just by reading tweets, watching crypto charts, and by playing with platforms offering various kinds of indicators. One of the most significant advantages of crypto markets is the accessibility and granularity of trading data. Most major exchanges offer free public APIs that provide real-time and historical price data, often down to the minute or even second. This includes not only price and volume, but also open interest, funding rates, and even aggregated order book data in some cases. In contrast, similar datasets for traditional assets (e.g., stocks or futures) are often locked behind expensive data vendors or limited in granularity. The open nature of crypto data allows independent developers and researchers to prototype, test, and iterate much more rapidly — making it an ideal environment for building and evaluating automated strategies.
+
+
+
+% Smart strategy explination  why a goal is neede
 % from where did I take inspiration 
 % book I read
 % testing testing and more testing
@@ -244,7 +257,7 @@ Once the backtest is finished which can take up to 10 minutes if we use differen
     outlier_mask = (df['trend'] == 'uptrend') & (df['is_outlier'] == 1) 
 \end{verbatim}
 
-Then I test the strategy on one month of data to evaluate whether it shows any potential. I consider a strategy to have potential if it is around break-even \footnote{Break-even is the point where the total profit equals the total loss. In other words, it's the point where the strategy neither makes nor loses money.} or slightly profitable and achieves a Sharpe ratio between 1 and 2.\footnote{The Sharpe ratio is a measure of risk-adjusted return. It compares the average return of a strategy to its volatility. A higher Sharpe ratio indicates a better balance between risk and return. A Sharpe ratio between 1 and 2 is considered decent in most financial contexts.}
+Then I test the strategy on one month of data to evaluate whether it shows any potential. I consider a strategy to have potential if it is around break-even \footnote{Break-even is the point where the total profit equals the total loss. In other words, it's the point where the strategy neither makes nor loses money.} or slightly profitable and achieves a Sharpe ratio between 1 and 2.
 
 \textbf{Results:}
 
