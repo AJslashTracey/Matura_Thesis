@@ -12,5 +12,7 @@
 \contentsline {subsection}{\numberline {3.1}Project Overview}{6}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Data collection}{6}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Designing and Developing Systems}{7}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Related Work}{9}{subsection.3.4}%
-\contentsline {section}{\numberline {4}Methodology}{10}{section.4}%
+\contentsline {subsection}{\numberline {3.4}Searching/Backtesting}{8}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Idea collection}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Related Work}{11}{subsection.4.1}%
+\contentsline {section}{\numberline {5}Methodology}{12}{section.5}%

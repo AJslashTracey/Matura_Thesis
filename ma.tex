@@ -249,6 +249,22 @@ The area where I saw the most potential was the order book delta. My hypothesis 
 % Premutation tests and strategy development 
 
 
+\newpage
+
+\subsection{Searching/Backtesting}
+As stated in my hypothesis: I think that the orderbook delta directly reflects the relationship between buyers and sellers at specific price levels. A strategy based on a negative order positive orderbook delta would not include enough context.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{imgs/showcase_idea_finding.png}
+    \caption{Orderbook delta}
+    \label{fig:orderbook_delta}
+\end{figure}
+
+
+
+
 
 
 \newpage
@@ -283,6 +299,12 @@ Then I test the strategy on one month of data to evaluate whether it shows any p
 On the $X$ axis you can see the sample size and on the $Y$ axis you can see the average return over he different test runs.
 
 
+
+\newpage
+\section{Idea collection}
+\begin{itemize}
+    \item Trend = $\text{Uptrend if } \frac{d}{dt}\text{MA} > 0$
+\end{itemize}
 
 
 \newpage
