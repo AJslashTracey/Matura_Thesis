@@ -254,15 +254,27 @@ The area where I saw the most potential was the order book delta. My hypothesis 
 \subsection{Searching/Backtesting}
 As stated in my hypothesis: I think that the orderbook delta directly reflects the relationship between buyers and sellers at specific price levels. A strategy based on a negative order positive orderbook delta would not include enough context.
 
-
-\begin{figure}
+\begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{imgs/showcase_idea_finding.png}
-    \caption{Orderbook delta}
+    \includegraphics[width=0.9\textwidth]{imgs/showcase_idea_finding.png}
+    \caption{Orderbook delta visualization showing price action (top) and corresponding delta values (bottom)}
     \label{fig:orderbook_delta}
 \end{figure}
 
+As shown in Figure \ref{fig:orderbook_delta}, the orderbook delta provides valuable insights at extreme values. The chart displays two key components:
+\begin{itemize}
+    \item The price action (top chart) shows the actual Bitcoin price movements
+    \item The orderbook delta (bottom chart) represents the imbalance between buy and sell orders
+\end{itemize}
 
+A high orderbook delta value indicates substantial buy orders below the current price. This creates a strong support level, as sellers would need significant pressure to break through these orders. Even if sellers manage to push through, these accumulated buy orders often create buying pressure that can lead to price support or potential rebounds.
+
+This relationship between orderbook delta and price action is particularly useful when:
+\begin{itemize}
+    \item The delta reaches extreme values, indicating significant order imbalance
+    \item There's a clear divergence between price action and orderbook delta
+    \item Multiple timeframe analysis shows consistent patterns
+\end{itemize}
 
 
 
