@@ -134,7 +134,7 @@ This will just be a website where you can see the live performance of the tradin
 
 \section{Theoretical Background}
 \subsection{Digitalisation of Trading}
-So when I am speaking of trading I mean the buying and selling of assets at an exchange. Before the digitalisation traders meet at exchanges to trade where they communicated with shouting and hand signals under each other to buy and sell assets from each other. The hand signals allowed the traders to communicate price, quantity and the type of order\footnote{An order is an instruction given by a trader to buy or sell a specific quantity of an asset, usually including details like the price and type of transaction (e.g., buy or sell).}
+So when speaking of trading the buying and selling of assets at an exchange is meant. Before the digitalisation traders meet at exchanges to trade where they communicated with shouting and hand signals under each other to buy and sell assets from each other. The hand signals allowed the traders to communicate price, quantity and the type of order\footnote{An order is an instruction given by a trader to buy or sell a specific quantity of an asset, usually including details like the price and type of transaction (e.g., buy or sell).}
 they wanted to set up.  All of this happened on so called "Trading Pits" which were located inside of exchanges.
 
 
@@ -313,13 +313,11 @@ On the $X$ axis you can see the sample size and on the $Y$ axis you can see the 
 
 
 \newpage
-\section{Idea collection}
-\begin{itemize}
-    \item Trend = $\text{Uptrend if } \frac{d}{dt}\text{MA} > 0$
-\end{itemize}
+\section{Strategy backtest implementation}
 
 
 \subsection{Sharp ratio}
+The sharp ratio will be the main strategy evaluation metric in my backtest  
 \begin{equation}
     \text{Sharpe ratio} = \frac{\text{Average return $t$}}{\text{Standard deviation $t$} \footnote{$t$ is the time span over which we calculate the average return and the standard deviation} }\cdot \sqrt{98280} \footnote{98280 is used to annualize the Sharpe ratio we do this in order to compare the Sharpe ratio with the Sharpe ratio of other strategies or funds}
 \end{equation}
@@ -389,12 +387,51 @@ As shown in Figure \ref{fig:outlier_context}, the dataframe contains various met
 The column $is\_outlier$ is a binary signal column if the current current orderbook delta value $\Delta_t$ is further than two standard deviations from the mean $\overline{\Delta}_{1440}$ of the orderbook delta.
 $outlier\_context$ is a string column that has a value of \textbf{b} if $\Delta_t$ has a postive Z score and \textbf{s} if it has a negative Z score.
 
-\subsubsection{Regime identification}
-\begin{verbatim}
-df_temp['trend'] == 'Uptrend'
+\subsection{Market Structure and Trend Identification}
 
-\end{verbatim}
+To identify trends in Bitcoin's price, we use a combination of price movement analysis and moving averages. The main challenge is to distinguish between real trends and temporary price movements. We start by converting our 1-minute price data into larger timeframes to better see the overall market direction.
 
+\subsubsection{Price Movement Analysis}
+The core of our trend analysis looks at how price moves over time. We use two main indicators:
+
+1. The derivative (rate of change) of a moving average:
+\begin{equation*}
+    \frac{d}{dt}\text{MA} = \text{Current MA value} - \text{Previous MA value}
+\end{equation*}
+When this derivative is positive, it indicates an upward trend, and when negative, a downward trend.
+
+2. Price levels comparison:
+We compare current prices with previous highs and lows using a window of time ($w$). This helps us confirm if we're really in a trend:
+\begin{equation*}
+\text{Trend}_t = \begin{cases}
+    \text{Uptrend} & \text{if price is making higher highs} \\
+    \text{Downtrend} & \text{if price is making lower lows} \\
+    \text{Ranging} & \text{otherwise}
+\end{cases}
+\end{equation*}
+
+\subsubsection{Support and Resistance}
+We also look at support and resistance levels to strengthen our trend analysis:
+
+\begin{itemize}
+    \item Support: Price levels where buying pressure tends to stop price from falling further
+    \item Resistance: Price levels where selling pressure tends to stop price from rising further
+\end{itemize}
+
+The slopes of these levels help us determine trend strength. For example, rising support and resistance levels indicate a strong uptrend, while falling levels suggest a downtrend.
+
+\subsubsection{Final Trend Determination}
+To make the final decision about the trend, we combine all these factors:
+\begin{equation*}
+\text{Final Trend} = \begin{cases}
+    \text{Uptrend} & \text{if } \frac{d}{dt}\text{MA} > 0 \text{ and making higher highs} \\
+    \text{Downtrend} & \text{if } \frac{d}{dt}\text{MA} < 0 \text{ and making lower lows} \\
+    \text{Previous Trend} & \text{if moving average confirms} \\
+    \text{Ranging} & \text{if no clear direction}
+\end{cases}
+\end{equation*}
+
+This approach helps us filter out market noise and identify real trading opportunities. We only take trades when all these factors align, which increases our chances of success.
 
 
 
