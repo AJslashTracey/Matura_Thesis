@@ -364,8 +364,12 @@ exits = trendChange | time_exit
 
 
 \newpage
-\subsubsection{Entry conditions calculations}
+\subsection{Entry conditions calculations}
 I have to give more context about the entry conditions. $df\_temp$ is just a variable to which I assign a timeseries dataframe \footnote{A dataframe is a two dimensional array with rows and columns} with different kind of metrics inside of it. The entry conditions are defined by two boolean conditions:
+
+
+\subsubsection{Outlier context}
+
 
 \begin{verbatim}
     df_temp['outlier_context'] == 'b'
@@ -377,9 +381,38 @@ As shown in Figure \ref{fig:outlier_context}, the dataframe contains various met
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.95\textwidth]{imgs/dataframeHead.png}
-    \caption{Example of the dataframe structure showing various metrics used for trading decisions}
+    \caption{}
     \label{fig:outlier_context}
 \end{figure}
+
+
+The column $is\_outlier$ is a binary signal column if the current current orderbook delta value $\Delta_t$ is further than two standard deviations from the mean $\overline{\Delta}_{1440}$ of the orderbook delta.
+$outlier\_context$ is a string column that has a value of \textbf{b} if $\Delta_t$ has a postive Z score and \textbf{s} if it has a negative Z score.
+
+\subsubsection{Regime identification}
+\begin{verbatim}
+df_temp['trend'] == 'Uptrend'
+
+\end{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
