@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  7 AUG 2025 09:13
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  7 AUG 2025 11:00
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -543,26 +543,36 @@ File: imgs/example_for_thesis_v2.png Graphic file (type bmp)
 
 
 [9]
+Overfull \hbox (35.25203pt too wide) in paragraph at lines 361--361
+[]\TU/lmtt/m/n/12 entries = (df_temp['outlier_context'] == 'b') & (df_temp['trend'] == 'Uptrend')[] 
+ []
+
+
 
 [10]
+File: imgs/dataframeHead.png Graphic file (type bmp)
+<imgs/dataframeHead.png>
+
 
 [11]
 
-[12] (./ma.aux)
+[12]
+
+[13] (./ma.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `ma.out' has not changed.
-(rerunfilecheck)             Checksum: 97A352C86B48619B5A64DC9E0AC3ECCE;2962.
+(rerunfilecheck)             Checksum: 0B8ECAE8E9C4303DB39E0CEDC5624F06;3506.
  ) 
 Here is how much of TeX's memory you used:
- 17662 strings out of 473832
- 324285 string characters out of 5729482
- 774237 words of memory out of 5000000
- 40510 multiletter control sequences out of 15000+600000
+ 17673 strings out of 473832
+ 324563 string characters out of 5729482
+ 774928 words of memory out of 5000000
+ 40520 multiletter control sequences out of 15000+600000
  567214 words of font info for 85 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  83i,9n,131p,2444b,596s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ma.pdf (16 pages).
+Output written on ma.pdf (17 pages).

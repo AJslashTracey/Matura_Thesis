@@ -16,5 +16,8 @@
 \contentsline {section}{\numberline {4}Idea collection}{10}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Sharp ratio}{10}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Backtesting results}{10}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Related Work}{11}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Methodology}{12}{section.5}%
+\contentsline {subsection}{\numberline {4.3}Backtest parameters}{10}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Code entry conditions}{10}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Entry conditions calculations}{11}{subsubsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.5}Related Work}{12}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Methodology}{13}{section.5}%

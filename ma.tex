@@ -333,7 +333,53 @@ On the $X$ axis you can see the sample size and on the $Y$ axis you can see the 
 \end{itemize}
 
 
+\subsection{Backtest parameters}
 
+\begin{itemize}
+    \item A stop lost of $2\%$ 
+    \item Exit is 120 minutes after entry or if a regime change occurs
+    \item fees of $0.0003\%$ and slippage of $0.0001\%$ 
+    \item accumulate $=$ True \footnote{This allows us to open multiple trades at the same timei}
+\end{itemize}
+
+
+\subsection{Code entry conditions}
+
+\begin{verbatim}
+# Entry conditions
+entries = (df_temp['outlier_context'] == 'b') & (df_temp['trend'] == 'Uptrend')
+
+
+# Exit after 120 minutes
+time_exit = exitSlots.shift(120).fillna(False)    
+
+# Exit on trend change
+trendChange = (df_temp['trend'] != df_temp['trend'].shift(1))  
+
+#Or statment to exit 
+exits = trendChange | time_exit
+\end{verbatim}
+
+
+
+
+\newpage
+\subsubsection{Entry conditions calculations}
+I have to give more context about the entry conditions. $df\_temp$ is just a variable to which I assign a timeseries dataframe \footnote{A dataframe is a two dimensional array with rows and columns} with different kind of metrics inside of it. The entry conditions are defined by two boolean conditions:
+
+\begin{verbatim}
+    df_temp['outlier_context'] == 'b'
+    df_temp['trend'] == 'Uptrend'
+\end{verbatim}
+
+As shown in Figure \ref{fig:outlier_context}, the dataframe contains various metrics that we use for our trading decisions:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{imgs/dataframeHead.png}
+    \caption{Example of the dataframe structure showing various metrics used for trading decisions}
+    \label{fig:outlier_context}
+\end{figure}
 
 
 
