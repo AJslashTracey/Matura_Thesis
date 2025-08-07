@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  5 AUG 2025 10:47
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  7 AUG 2025 09:13
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -554,15 +554,15 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `ma.out' has not changed.
-(rerunfilecheck)             Checksum: 87047E8C7036E312C5762A9E0C4A09B0;2690.
+(rerunfilecheck)             Checksum: 97A352C86B48619B5A64DC9E0AC3ECCE;2962.
  ) 
 Here is how much of TeX's memory you used:
- 17660 strings out of 473832
- 324225 string characters out of 5729482
- 773943 words of memory out of 5000000
- 40508 multiletter control sequences out of 15000+600000
+ 17662 strings out of 473832
+ 324285 string characters out of 5729482
+ 774237 words of memory out of 5000000
+ 40510 multiletter control sequences out of 15000+600000
  567214 words of font info for 85 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 83i,8n,131p,2444b,596s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,9n,131p,2444b,596s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on ma.pdf (16 pages).

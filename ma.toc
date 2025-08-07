@@ -14,5 +14,7 @@
 \contentsline {subsection}{\numberline {3.3}Designing and Developing Systems}{7}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Searching/Backtesting}{8}{subsection.3.4}%
 \contentsline {section}{\numberline {4}Idea collection}{10}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Related Work}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.1}Sharp ratio}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Backtesting results}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Related Work}{11}{subsection.4.3}%
 \contentsline {section}{\numberline {5}Methodology}{12}{section.5}%
