@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{amsmath}
 \usepackage{amsfonts}
-\usepackage{geometry}
+\usepackage[a4paper, margin=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage{setspace}
 \usepackage{parskip}
@@ -10,17 +10,15 @@
 \usepackage{booktabs}
 \usepackage{glossaries}
 \usepackage{subcaption} % in your preamble
-\usepackage{fontspec}
-\usepackage[a4paper, margin=2.5cm]{geometry}
-\usepackage{setspace}
 \onehalfspacing
 
+\begin{document}
 
 
-\newfontface{\backitshape}{lmroman10-italic}[
-  Extension=.otf,
-  FakeSlant=-0.4,
-]
+
+
+
+
 
 
 
@@ -30,7 +28,6 @@
 % Configure image compression for XeTeX
 \setkeys{Gin}{draft=false}
 
-\geometry{a4paper, margin=1in}
 \setstretch{1.2}
 
 \title{\Huge Autonomous Bitcoin Trading\\\vspace{1cm}\Large Documentation}
@@ -46,9 +43,6 @@
     \vspace{0.5cm}
     \textbf{Dr. Geoffrey Ostrin}
 }
-\date{\Large \today}
-
-\begin{document}
 
 % Title page
 \pagenumbering{gobble}
