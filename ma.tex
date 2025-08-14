@@ -11,6 +11,12 @@
 \usepackage{glossaries}
 \usepackage{subcaption} % in your preamble
 \onehalfspacing
+\usepackage[margin=2.5cm]{geometry}
+\renewcommand{\baselinestretch}{1.5}
+\usepackage{fontspec}
+\setmainfont{Arial}
+
+
 
 \begin{document}
 
@@ -52,24 +58,25 @@
 % Abstract
 \pagenumbering{roman}
 \begin{abstract}
-    This thesis investigates the development and implementation of an autonomous Bitcoin trading algorithm, addressing the challenges of human emotion and bias in cryptocurrency trading. 
-    Starting from the observation that human emotion based decision making, disables traders to act on opportunity in the markets. 
-    The research combines technical analysis with algorithmic trading, employing a quantitative methodology that includes data collection. Strategy development using Python, and testing strategies on historical price data. The implementation involves creating a custom backtesting framework, developing rule-based trading strategies, and deploying a live trading system on a Linux based server.
+    This thesis investigates the development and implementation of an autonomous Bitcoin trading algorithm, addressing the challenges of human emotion and bias in trading.
+    Starting from the observation that human emotion-based decision making prevents traders from acting on opportunities in the markets…
+    The research combines technical analysis with algorithmic trading, employing a quantitative methodology that includes data collection, strategy development using Python, and testing strategies on historical price data. The implementation involves creating a custom backtesting framework, developing rule-based trading strategies, and deploying a live trading system on a Linux based server.
 
 \end{abstract}
 \clearpage
 
 % Continue roman numbering from abstract
 \section*{Foreword}
-My interest in Bitcoin began in early 2022 after reading \textit{The Bitcoin Standard} by Saifedean Ammous. The book explores the history of money and argues that Bitcoin is a revolutionary form of sound money \footnote{A form of money that maintains its value over time, offering stability and reliability} superior to traditional currencies. The book sparked an interest in me, and I was drawn into the world of crypto. As a result, I spent more and more time watching charts and losing my mind over them. The idea of making profit from these seemingly random price movements fascinated me.
+My interest in Bitcoin began in early 2022 after reading \textit{The Bitcoin Standard by Saifedean Ammous}. The book explores the history of money and argues that Bitcoin is a revolutionary form of hard money \footnote{A form of money that maintains its value over time, offering stability and reliability} superior to traditional currencies. The book sparked an interest in me, and I was drawn into the world of crypto. As a result, I spent more and more time watching charts and losing my mind over them. The idea of making profit from these seemingly random price movements fascinated me.
 Trading profitably is straightforward: sell high and buy low. The practical implementation, however, is filled with uncertainty and  fight against your own instincts and emotions.
+In addition to getting into crypto I also tried to learn to code since I wanted to make money on the side without having to leave my house. The first time I learned about automated trading algorithms I thought it was one of the hardest things to do. The combination of knowledge made me admire people who code in the finance space. It felt impossible but the more I tried the closer I got to something into the direction of a trading algorithm. With my matura thesis approaching I was pretty confident that I would be able to build an automated Bitcoin trading algorithm. 
 
 
 
 
 
 
-I had no idea what I was getting myself into, and if I had known before, I would probably have never started. I spent more time than I intended and completely lost myself in the work. I totally forgot about the writing part and spent a lot of time just coding. This project grew much bigger than I initially thought, but I'm proud to present both the work outcome and the learnings I gained from it.
+I had no idea what I was getting myself into, and if I had known before, I would probably have never started. I spent more time than I intended and completely lost myself during the summer vacation. I totally forgot about the writing part and spent a lot of time just coding. This project grew much bigger than I initially thought, but I'm proud to present both the work outcome and the learnings I gained from it.
 
 
 
@@ -86,7 +93,7 @@ I had no idea what I was getting myself into, and if I had known before, I would
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \section{Introduction}
-This thesis explores whether I can develop an autonomous trading algorithm that can generate me a consistent profit. To that end my thesis will cover the entire development cycle, from researching, backtesting strategies and live deployment execution with real money on Bitcoin evaluating the results in the end.
+This thesis explores whether I can develop an autonomous trading algorithm that can generate me a consistent profit. To that end my thesis will cover the entire cycle, from researching, finding a strategy, and live deployment execution with real money on Bitcoin evaluating the results in the end.
 
 
 The strategy I will try to find should rely on  signals found by analysing historical Bitcoin data. The model will be tested on historical timeseries data.
@@ -149,7 +156,7 @@ So when speaking of trading the buying and selling of assets at an exchange is m
 they wanted to set up.  All of this happened on so called "Trading Pits" which were located inside of exchanges.
 
 
-In the late 20th century electronical systems gradualy replaced the communication used insde of the Trading Pit. Electronical systems brought a lot of advantages with them as orders could be executed faster, more cheaply and with improved record-keeping. Which opened the world of trading to a broader range of market participants. 
+In the late 20th century electronical systems gradualy replaced the communication used insde of the Trading Pit. Electronical systems brought a lot of advantages with them as orders could be executed faster, more cheaply and with improved record-keeping. Which opened the world of trading to a broader range of market participants.
 As electronical trading grew, the use of technical analysis grew too, in short TA, makes use of historical price data where patters can be watched and indicators to forcast price movementes.
 
 Online brokerages enabled individuals to trade based on their own interpretation of TA without the need of giving out a form of physical trading signal.
@@ -164,7 +171,7 @@ Besides institutions, there are also individual traders who follow either a syst
 Making consistent profits in financial markets is difficult. Prices move in ways that often seem unpredictable, and most traders both discretionary and systematic struggle to gain a lasting edge. \footnote[1]{An edge is a consistent advantage over the market. It can be achieved through superior information, better analysis, or a unique trading approach.}One explination for this is the Efficient market hypothesis (EMH) which suggest that asset prices already reflect all available information, leaving little room for profitable oppertunities.
 
 
-If the EMH were fully accurate in practice, then even the most advanced trading algorithms and best discretionary traders would not be able to consistently beat the market. \footnote[2]{Beating the market means achieving a higher ROI ("Return on Investment") than a certain benchmark. A common benchmark is the S\&P 500, which is an index including the 500 largest companies listed on U.S. stock exchanges. The S\&P 500 has had an average yearly return of about 10.33\% since 1957} Yet markets are not perfectly efficient, being heavily influenced by emotion, fear, and herd behaviour. Traders often fail to act on clear signals simply because it is psychologically hard to buy on a red day or sell while everybody is full of euphoria. 
+If the EMH were fully accurate in practice, then even the most advanced trading algorithms and best discretionary traders would not be able to consistently beat the market. \footnote[2]{Beating the market means achieving a higher ROI ("Return on Investment") than a certain benchmark. A common benchmark is the S\&P 500, which is an index including the 500 largest companies listed on U.S. stock exchanges. The S\&P 500 has had an average yearly return of about 10.33\% since 1957} Yet markets are not perfectly efficient, being heavily influenced by emotion, fear, and herd behaviour. Traders often fail to act on clear signals simply because it is psychologically hard to buy on a red day or sell while everybody is full of euphoria.
 
 
 To make things even better depending on where you trade market can change in efficient. But still some of the most valuable assets like stocks, gold and Bitcoin prices are a reflection of human emotion pricing in information. Especially now with Trump in office a lot of volatility came in with big opportunities
@@ -181,19 +188,19 @@ It is possible to make a profit in the markets but it is not easy, not for every
 
 The development of a systematic strategy typically follows several key steps:
 
-\textbf{Idea Generation:}  
+\textbf{Idea Generation:}
 The process often begins with a hypothesis. For example, a trader might assume that when Bitcoin rises sharply within a short time, it tends to continue rising for a few more hours this would be a form of momentum. The idea must be simple enough to be coded, yet specific enough to be tested.
 
-\textbf{Rule Definition:}  
+\textbf{Rule Definition:}
 Once the idea is clear, it is translated into precise entry and exit rules. For instance: "Buy Bitcoin if the 15-minute price increases by more than 1.5\% compared to the previous 60 minutes." Rules also include when to close a position, such as "Sell if the price drops 1\% below the entry."
 
-\textbf{Backtesting:}  
+\textbf{Backtesting:}
 The rules are then tested on historical data. This allows the developer to evaluate how the strategy would have performed in the past. Key performance metrics such as profit, win rate, drawdown, and Sharpe ratio are used to assess quality.
 
-\textbf{Optimization and Robustness Testing:}  
+\textbf{Optimization and Robustness Testing:}
 After initial tests, parameters can be adjusted. For example, changing the percentage thresholds or time windows. However, this step must be handled with care — overfitting the strategy to past data may cause it to fail in real markets.
 
-\textbf{Live Execution:}  
+\textbf{Live Execution:}
 If the backtesting results are promising and the strategy appears robust, it can be deployed live. Execution is handled by a bot or script running on a server, which listens to market data and acts as soon as the conditions are met.
 
 Throughout this process, the focus remains on consistency and measurability. Unlike human decision-making, a systematic strategy must behave identically entry and exit conditions. This makes it possible to evaluate, improve and automate trading in a transparent way.
@@ -215,12 +222,12 @@ I chose to create my own dataset because it offers a key advantage: it allows me
 
 In my dataset, I calculate the 1\%, 2.5\%, and 5\% delta of the order book. Additionally, I include the current Bitcoin price and the current timestamp. The program I wrote collects data by sending API requests \footnote[2]{API stands for Application Programming Interface. It is a tool that allows programs to request and receive specific data from external services in this case, used to fetch real-time Bitcoin price and orderbook data from the coinbase crypto exchange.} to the Coinbase Exchange API at one-minute intervals. It retrieves both the current Bitcoin price and a full snapshot of the order book at that moment. A complete snapshot is necessary to calculate order book deltas at different percentage depths accurately.
 
-The script is hosted on my PaaS where my database (Postgres) is also hosted where all the data is stored. It has been running 24/7 since March 11, 2025. 
+The script is hosted on my PaaS where my database (Postgres) is also hosted where all the data is stored. It has been running 24/7 since March 11, 2025.
 \href{https://customchart-production.up.railway.app/#}{Live datamining progress}
 
 The orderbook delta is calculated by summing the total value of bid orders $n\%$ below the current price ($P_t$) and subtracting the total value of ask orders that are $n\%$ above the current price ($P_t$).
 \begin{equation*}
-    \Delta_{OB} = \sum_{i=1}^{n} V_{bid_i} - \sum_{i=1}^{n} V_{ask_i}    
+    \Delta_{OB} = \sum_{i=1}^{n} V_{bid_i} - \sum_{i=1}^{n} V_{ask_i}
 \end{equation*}
 
 
@@ -252,12 +259,12 @@ The area where I saw the most potential was the order book delta. My hypothesis 
 
 
 % Smart strategy explination  why a goal is neede
-% from where did I take inspiration 
+% from where did I take inspiration
 % book I read
 % testing testing and more testing
 % where could I have done better
 % how do the results macht with the live test
-% Premutation tests and strategy development 
+% Premutation tests and strategy development
 
 
 \newpage
@@ -295,7 +302,7 @@ This relationship between orderbook delta and price action is particularly usefu
 
 \begin{verbatim}
     #Example for entry signals in the code
-    outlier_mask = (df['trend'] == 'uptrend') & (df['is_outlier'] == 1) 
+    outlier_mask = (df['trend'] == 'uptrend') & (df['is_outlier'] == 1)
 \end{verbatim}
 
 Then I test the strategy on one month of data to evaluate whether it shows any potential. I consider a strategy to have potential if it is around break-even \footnote{Break-even is the point where the total profit equals the total loss. In other words, it's the point where the strategy neither makes nor loses money.} or slightly profitable and achieves a Sharpe ratio between 1 and 2.
@@ -328,7 +335,7 @@ On the $X$ axis you can see the sample size and on the $Y$ axis you can see the 
 
 
 \subsection{Sharp ratio}
-The sharp ratio will be the main strategy evaluation metric in my backtest  
+The sharp ratio will be the main strategy evaluation metric in my backtest
 \begin{equation}
     \text{Sharpe ratio} = \frac{\text{Average return $t$}}{\text{Standard deviation $t$} \footnote{$t$ is the time span over which we calculate the average return and the standard deviation} }\cdot \sqrt{98280} \footnote{98280 is used to annualize the Sharpe ratio we do this in order to compare the Sharpe ratio with the Sharpe ratio of other strategies or funds}
 \end{equation}
@@ -345,9 +352,9 @@ The sharp ratio will be the main strategy evaluation metric in my backtest
 \subsection{Backtest parameters}
 
 \begin{itemize}
-    \item A stop lost of $2\%$ 
+    \item A stop lost of $2\%$
     \item Exit is 120 minutes after entry or if a regime change occurs
-    \item fees of $0.0003\%$ and slippage of $0.0001\%$ 
+    \item fees of $0.0003\%$ and slippage of $0.0001\%$
     \item accumulate $=$ True \footnote{This allows us to open multiple trades at the same timei}
 \end{itemize}
 
@@ -360,12 +367,12 @@ entries = (df_temp['outlier_context'] == 'b') & (df_temp['trend'] == 'Uptrend')
 
 
 # Exit after 120 minutes
-time_exit = exitSlots.shift(120).fillna(False)    
+time_exit = exitSlots.shift(120).fillna(False)
 
 # Exit on trend change
-trendChange = (df_temp['trend'] != df_temp['trend'].shift(1))  
+trendChange = (df_temp['trend'] != df_temp['trend'].shift(1))
 
-#Or statment to exit 
+#Or statment to exit
 exits = trendChange | time_exit
 \end{verbatim}
 
@@ -400,7 +407,7 @@ $outlier\_context$ is a string column that has a value of \textbf{b} if $\Delta_
 
 \subsection{Market Structure and Trend Identification}
 
-To identify trends in Bitcoin's price, we use a combination of price movement analysis and moving averages. The main challenge is to distinguish between real trends and temporary price movements. We start by converting our 1-minute price data into OHLC \footnote{OHLC stands for Open, High, Low, and Close. It is a type of data that is used to represent the price action of an asset over a period of time and is also known as a candlestick chart.} 240 minute data to better see the overall market direction. 
+To identify trends in Bitcoin's price, we use a combination of price movement analysis and moving averages. The main challenge is to distinguish between real trends and temporary price movements. We start by converting our 1-minute price data into OHLC \footnote{OHLC stands for Open, High, Low, and Close. It is a type of data that is used to represent the price action of an asset over a period of time and is also known as a candlestick chart.} 240 minute data to better see the overall market direction.
 
 \subsubsection{Price Movement Analysis}
 The core of our trend analysis looks at how price moves over time. We use two main indicators:
