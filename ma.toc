@@ -5,9 +5,8 @@
 \contentsline {subsection}{\numberline {1.4}Trading algorithm}{2}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Live dashboard}{2}{subsection.1.5}%
 \contentsline {section}{\numberline {2}Theoretical Background}{3}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Digitalisation of Trading}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Efficient markets}{4}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Development of a Systematic Strategy}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.1}Efficient markets}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Development of a Systematic Strategy}{5}{subsection.2.2}%
 \contentsline {section}{\numberline {3}Methodology}{6}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Project Overview}{6}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Data collection}{6}{subsection.3.2}%
