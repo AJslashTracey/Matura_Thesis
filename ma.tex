@@ -92,7 +92,7 @@ I had no idea what I was getting myself into, and if I had known before, I would
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \section{Introduction}
-This thesis explores whether I can develop an autonomous trading algorithm that can generate me a consistent profit. To that end my thesis will cover the entire cycle, from researching, finding a strategy, and live deployment execution with real money on Bitcoin evaluating the results in the end.
+This thesis explores whether I can develop an autonomous trading algorithm that can generate me a consistent profit. To that end my thesis will cover the entire cycle, from researching, finding a strategy, and live trading algorithm results with real money on Bitcoin evaluating the results in the end.
 
 
 The strategy I will try to find should rely on  signals found by analysing historical Bitcoin data. The model will be tested on historical timeseries data.
@@ -101,7 +101,7 @@ The work is divided in three parts: Researching this can be done in multiple way
 
 
 
-The skills I need to complete this project are Luckily straight forward: Statistics, Programming and understanding how the market operates. I need to apply stasticial rules to check if my idea is worthless or has potential to make me a profit if i automate the execution process. Programming is just needed to make the process of testing or applyinng my ideas easy on large datasets since I have to test on timeseries up to 200'000 values. The algorithm will be written in Python and will run 24 hours a day seven days a week.
+The skills I need to complete this project are: Statistics, Programming and understanding how the market operates. I need to apply stasticial rules to check if my idea is worthless or has potential to make me a profit if I automate the execution process. Programming is just needed to make the process of testing or applyinng my ideas easy on large datasets since I have to test on timeseries up including up to 200'000 values. The algorithm will be written in Python and will run 24 hours a day seven days a week.
 
 
 
@@ -121,46 +121,42 @@ So I'm planning to end up with the following products at the end of this project
 
 
 
-\subsection{Trading strategy}
-A trading strategy is a set of rules that are used to make a decision to buy or sell a asset. it consists out of systematic rules or purely based on discretionary rules.
-Systematic rules are set for specific values to occur or a signals so for example if we move up 2\% in one day we buy x amount of Bitcoin. A discretionary rule is a rule that is based on a human's intuition or a feeling.
-
-My algorithm trading strategy is clearly a systematic rule set since we can't automate discretionary rules.
-
-\subsection{Backtesting Results}
-To find an strategy we have to first test potential ideas on historical data after finding a potential strategy we can run backtests to see how it would have performed in historical environments
-
-
-
-
-\subsection{Research documentation}
-Throughout this research, I have documented the formulas used and detailed test results that were too extensive to include in the main thesis. This documentation serves as a companion piece, written to be understandable after reading the main thesis.
-
-
-\subsection{Trading algorithm}
-This will be in form of a github repository, github is a platform where you can share codebases and collaborate with other people.
-It is the easiest way to share my code and make it available to other people. So in the Github repository I will share the codebase for my trading algorithm
-
-
-\subsection{Live dashboard}
-This will just be a website where you can see the live performance of the trading algorithm, the live signal calculations results and how my algorithm currently is positioned.
-
-
 
 \newpage
 
 \section{Theoretical Background}
-\subsection*{What is trading?}
-Trading means buying and selling financial assets like stocks, cryptocurrencies, or commodities, usually with the goal of making a profit. Traders try to buy at a low price and sell at a higher one, or profit from falling prices by selling high and buying back lower. Prices in financial markets change constantly, which creates opportunities — but also risks. There are many different types of trading, depending on the chosen timeframe, strategy, and how trades are managed.
+\subsubsection*{Backtests Results}
+Before we start to automate a strategy we have to test it on historical data. This is called backtesting. Backtesting is a process of testing a trading strategy on historical data to evaluate its performance. It is a way to see how a strategy would have performed in the past. This is used in order to see if the strategy is worth automating.
 
 
-In this thesis I will try to find success in the algorithmic trading niche, also know as Algo-trading or automated trading. This is a type of trading which uses computer programs to execute trades in finacial markets based predefined rules or mathematical models.  More specifically my trading strategy can be descirbed as a Statistical Signal-Based Trading. Since I act on specific signals which showed certain probability of one thing happneing over another.
+
+\subsection*{Trading strategy}
+A trading strategy is a set of rules that are used to make a decision to buy or sell an asset. it consists out of systematic rules or purely based on discretionary rules.
+Systematic rules are set for specific values to occur or a signals so for example if we move up 2\% in one day we buy x amount of Bitcoin. A discretionary rule is a rule that is based on a human's intuition or a feeling.
+
+My algorithm trading strategy is clearly a systematic rule set since we can't automate discretionary rules.
+
+
+
 
 
 
 \newpage
-\subsection{Efficient markets}
+\subsection*{Efficient markets}
 Making consistent profits in financial markets is difficult. Prices move in ways that often seem unpredictable, and most traders both discretionary and systematic struggle to gain a lasting edge. \footnote[1]{An edge is a consistent advantage over the market. It can be achieved through superior information, better analysis, or a unique trading approach.}One explination for this is the Efficient market hypothesis (EMH) which suggest that asset prices already reflect all available information, leaving little room for profitable oppertunities.
+
+
+
+\subsection*{What is trading?}
+Trading means buying and selling financial assets like stocks, cryptocurrencies, or commodities, usually with the goal of making a profit. Traders try to buy at a low price and sell at a higher one, or profit from falling prices by selling high and buying back lower. Prices in financial markets change constantly, which creates opportunities — but also risks. There are many different types of trading, depending on the chosen timeframe, strategy, and how trades are managed. Losing is part of every strategy the goal is to lose less money than you win.
+As trading is often seen as an easy way to make money it is important to understand that it is not easy. It is a skill that requires a lot of time and effort to master. Type of trading strategy does not matter there is no easy or fast way to success in trading. 
+
+In this thesis I will try to find success in the algorithmic trading niche, also know as Algo-trading or automated trading. This is a type of trading which uses computer programs to execute trades in finacial markets based on predefined rules or mathematical models.  More specifically my trading strategy can be descirbed as a Statistical Signal-Based approach. Since I act on specific signals which showed certain probability of one thing happening over another. The idea behind this approach is to find a metric which can be connected to a following price movement.
+
+
+
+
+
 
 
 If the EMH were fully accurate in practice, then even the most advanced trading algorithms and best discretionary traders would not be able to consistently beat the market. \footnote[2]{Beating the market means achieving a higher ROI ("Return on Investment") than a certain benchmark. A common benchmark is the S\&P 500, which is an index including the 500 largest companies listed on U.S. stock exchanges. The S\&P 500 has had an average yearly return of about 10.33\% since 1957} Yet markets are not perfectly efficient, being heavily influenced by emotion, fear, and herd behaviour. Traders often fail to act on clear signals simply because it is psychologically hard to buy on a red day or sell while everybody is full of euphoria.
