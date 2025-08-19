@@ -92,22 +92,26 @@ I had no idea what I was getting myself into, and if I had known before, I would
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \section{Introduction}
-This thesis explores whether I can develop an autonomous trading algorithm that can generate me a consistent profit. To that end my thesis will cover the entire cycle, from researching, finding a strategy, and live trading algorithm results with real money on Bitcoin evaluating the results in the end.
-
-
-The strategy I will try to find should rely on  signals found by analysing historical Bitcoin data. The model will be tested on historical timeseries data.
-
-The work is divided in three parts: Researching this can be done in multiple ways just by watching markets over longer time periods to get ideas, reading books about how other people were able to develope strategies and steal logic from them or just try to find something by yourself which can be implemented as a strategy.
+This thesis explores whether I can develop an autonomous trading algorithm that can generate me a consistent profit. To that end my thesis will cover the entire development cycle of an algorithmic trading strategy. The process will include research, finding a trading strategy, backtesting, and live trading algorithm results.
 
 
 
-The skills I need to complete this project are: Statistics, Programming and understanding how the market operates. I need to apply stasticial rules to check if my idea is worthless or has potential to make me a profit if I automate the execution process. Programming is just needed to make the process of testing or applyinng my ideas easy on large datasets since I have to test on timeseries up including up to 200'000 values. The algorithm will be written in Python and will run 24 hours a day seven days a week.
+The work is divided in three parts: Finding a strategy, Backtesting, and Live trading.
+
+Finding a strategy can be done in multiple ways just by watching markets over longer time periods to get ideas, reading books about how other people were able to develope strategies and steal logic from them. In my case I will try to find a strategy by analysing the orderbook delta and identifying trends on the not stationary bitcoin price. \footnote{Not stationary means not being still or fixed in one place; moving or changing rather than remaining constant.}
+
+Backtesting is the process of testing a trading strategy on historical data to evaluate its performance. It is used to see if the strategy is worth automating.
+
+Live trading is the process of executing a trading strategy on a live market. Here I will see if my strategy works in the real market and how it will behave. The strategy will be automated in python. A major difference is that I will use two different python programs for the backtesting process and the live trading algorithm.  
+
+
+The project requires know how in three key areas: Statistics, Programming and understanding how the cryptocurrencies market operates. I need to apply stasticial rules to check if my idea is worthless or has potential to make me a profit if I automate the execution process. Programming is just needed to make the process of testing or applyinng my ideas easy on large datasets since I have to test on timeseries up including up to 200'000 values. The algorithm will be written in Python and will run 24 hours a day seven days a week.
 
 
 
 
 
-So I'm planning to end up with the following products at the end of this project:
+By the end of the project, I aim to deliver the following components:
 
 \begin{itemize}
     \item Trading strategy
