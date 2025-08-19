@@ -114,13 +114,10 @@ The project requires know how in three key areas: Statistics, Programming and un
 By the end of the project, I aim to deliver the following components:
 
 \begin{itemize}
+    \item Backtest results
     \item Trading strategy
-    \item Backtests results
-    \item Research documentation
-    \item Trading algorithm
+    \item Trading algorithm programm
     \item Live execution results
-    \item Live Dashboard
-
 \end{itemize}
 
 
@@ -129,16 +126,6 @@ By the end of the project, I aim to deliver the following components:
 \newpage
 
 \section{Theoretical Background}
-\subsubsection*{Backtests Results}
-Before we start to automate a strategy we have to test it on historical data. This is called backtesting. Backtesting is a process of testing a trading strategy on historical data to evaluate its performance. It is a way to see how a strategy would have performed in the past. This is used in order to see if the strategy is worth automating.
-
-
-
-\subsection*{Trading strategy}
-A trading strategy is a set of rules that are used to make a decision to buy or sell an asset. it consists out of systematic rules or purely based on discretionary rules.
-Systematic rules are set for specific values to occur or a signals so for example if we move up 2\% in one day we buy x amount of Bitcoin. A discretionary rule is a rule that is based on a human's intuition or a feeling.
-
-My algorithm trading strategy is clearly a systematic rule set since we can't automate discretionary rules.
 
 
 
@@ -151,7 +138,23 @@ My algorithm trading strategy is clearly a systematic rule set since we can't au
 Trading means buying and selling financial assets like stocks, cryptocurrencies, or commodities, usually with the goal of making a profit. Traders try to buy at a low price and sell at a higher one, or profit from falling prices by selling high and buying back lower. Prices in financial markets change constantly, which creates opportunities — but also risks. There are many different types of trading, depending on the chosen timeframe, strategy, and how trades are managed. Losing is part of every strategy the goal is to lose less money than you win.
 As trading is often seen as an easy way to make money it is important to understand that it is not easy. It is a skill that requires a lot of time and effort to master. Type of trading strategy does not matter there is no easy or fast way to success in trading. 
 
-In this thesis I will try to find success in the algorithmic trading niche, also know as Algo-trading or automated trading. This is a type of trading which uses computer programs to execute trades in finacial markets based on predefined rules or mathematical models.  More specifically my trading strategy can be descirbed as a Statistical Signal-Based approach. Since I act on specific signals which showed certain probability of one thing happening over another. The idea behind this approach is to find a metric which can be connected to a following price movement.
+\subsubsection*{Algorithmic Trading}
+In this thesis I will try to find success in the algorithmic trading niche, also know as Algo-trading or automated trading. This is a type of trading which uses computer programs to execute trades in finacial markets based on predefined rules or mathematical models.  Inside of algorithmic trading there are again many different types. Some examples are: statistical arbitrage, trend following, and High-Frequency Trading. In terms of logic all these are not related at all and strategies are often very complex in these areas. 
+
+My strategy is best descirbed as a statistical signal-based strategy. As I try to find a metric that shows statistical evidence on which I can capitalized on. In financial markets we can profit by betting on a volatilty change \footnote{a measure of how much and how quickly the price of a trading instrument fluctuates over time} or directional bias. Capitalizing from directional bias is as simple as buying if your directional bias positive and selling if we have a negative directional bias. (I am reffering to positive and negative returns)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \newpage
