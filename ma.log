@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  20 AUG 2025 16:42
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  20 AUG 2025 17:32
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -626,9 +626,6 @@ Overfull \hbox (8.15433pt too wide) in paragraph at lines 69--72
 [4]
 
 [5]
-Overfull \vbox (0.32365pt too high) has occurred while \output is active []
-
-
 
 [6]
 
@@ -643,7 +640,7 @@ File: imgs/showcase_market_simulation.png Graphic file (type bmp)
 
 
 [9]
-Overfull \hbox (32.97581pt too wide) in paragraph at lines 389--389
+Overfull \hbox (32.97581pt too wide) in paragraph at lines 390--390
 []\TU/lmtt/m/n/12 entries = (df_temp['outlier_context'] == 'b') & (df_temp['trend'] == 'Uptrend')[] 
  []
 
@@ -666,12 +663,12 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `ma.out' has not changed.
-(rerunfilecheck)             Checksum: 0295D1221A07AB2E899998BA4947C942;3247.
+(rerunfilecheck)             Checksum: 03697B42688051B98AB61F654C8445B7;2970.
  ) 
 Here is how much of TeX's memory you used:
  20091 strings out of 473832
  411970 string characters out of 5729482
- 898517 words of memory out of 5000000
+ 898218 words of memory out of 5000000
  42907 multiletter control sequences out of 15000+600000
  567318 words of font info for 98 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
