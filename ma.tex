@@ -178,27 +178,33 @@ It is possible to make a profit in the markets but it is not easy, not for every
 
 \newpage
 
-\subsection{Development of a Systematic Strategy}
 
 
-The development of a systematic strategy typically follows several key steps:
+
+
+
+
+
+\subsection*{Development of a Systematic Strategy}
+
+
+A systematic strategy is a trading strategy which uses fixed entry and exit conditions. Entry conditions in systematic trading strategies can vary from entries based on news, technical indicators, or other external factors. In contrast to discretionary trading where the trader decides whether to enter or exit a trade based on human emotion or intuition.
 
 \textbf{Idea Generation:}
-The process often begins with a hypothesis. For example, a trader might assume that when Bitcoin rises sharply within a short time, it tends to continue rising for a few more hours this would be a form of momentum. The idea must be simple enough to be coded, yet specific enough to be tested.
+The systematic strategy has to be based on a hypothesis that once signal X occurs the market is wrong and we can profit from the market correcting back to a fair value. Finding an idea to test on if there is an edge to it is the first step. This can be done by copying other strategies and applying them in a different way or in a different market. The approach I took was trying to make a discretionary strategy into a systematic one.
 
-\textbf{Rule Definition:}
-Once the idea is clear, it is translated into precise entry and exit rules. For instance: "Buy Bitcoin if the 15-minute price increases by more than 1.5\% compared to the previous 60 minutes." Rules also include when to close a position, such as "Sell if the price drops 1\% below the entry."
+
 
 \textbf{Backtesting:}
-The rules are then tested on historical data. This allows the developer to evaluate how the strategy would have performed in the past. Key performance metrics such as profit, win rate, drawdown, and Sharpe ratio are used to assess quality.
+After coming up with an idea we have to make a stric entry and exit conditions. We test the rules on historical data. This allows the developer to evaluate how the strategy would have performed in the past. This allows us to get a hint on how the strategy would perform in the future and if it is worth automating. 
 
 \textbf{Optimization and Robustness Testing:}
-After initial tests, parameters can be adjusted. For example, changing the percentage thresholds or time windows. However, this step must be handled with care — overfitting the strategy to past data may cause it to fail in real markets.
+After initial tests, parameters can be adjusted. A simple example would be adjusting the holding time of a trade. If a strategy ends up to not be profitable with a trade holding time of 15 minutes this doesn't mean the strategy is not profitable. It just means that the strategy is not profitable with a trade holding time of 15 minutes. Some inefficiencies can be corrected in minutes others might take a day or two. Holding time is a simple example which doesn't bring a lot of risk with it if we test on different holding times. As long as we use a limited amount and have clear differences between the different holding times we can be sure that the strategy is robust. 
 
 \textbf{Live Execution:}
-If the backtesting results are promising and the strategy appears robust, it can be deployed live. Execution is handled by a bot or script running on a server, which listens to market data and acts as soon as the conditions are met.
+If the backtesting results are promising and the strategy appears robust, it can be deployed live. Execution is handled by a bot or script running on a server, which listens to market data and acts as soon as the conditions are met. New things have to be taken in consideration here whicha are not a problem in backtests. One such thing is the time it takes to calculate the entry and exit conditions. This is a problem, as the price might change between when the actual entry conditions occur and when the entry signal is calculated.
 
-Throughout this process, the focus remains on consistency and measurability. Unlike human decision-making, a systematic strategy must behave identically entry and exit conditions. This makes it possible to evaluate, improve and automate trading in a transparent way.
+Throughout this process, the focus remains on consistency and measurable results. Unlike human decision-making, a systematic strategy must behave identically entry and exit conditions. This makes it possible to evaluate, improve and automate trading in a transparent way.
 
 
 
@@ -306,18 +312,7 @@ Then I test the strategy on one month of data to evaluate whether it shows any p
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-        \includegraphics[width=\textwidth,height=0.3\textheight,keepaspectratio]{imgs/example_backtest_for_thesis.png}
-        \caption{Bullish outliers}
-        \label{fig:bullish_outliers}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \includegraphics[width=\textwidth,height=0.3\textheight,keepaspectratio]{imgs/example_for_thesis_v2.png}
-        \caption{Bullish outliers uptrend}
-        \label{fig:bullish_outliers_uptrend}
-    \end{subfigure}
-    \caption{Just two examples of the backtest results}
+    \includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{imgs/showcase_market_simulation.png}
     \label{fig:bullish_outliers_comparison}
 \end{figure}
 

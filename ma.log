@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  19 AUG 2025 21:17
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  20 AUG 2025 15:47
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -636,14 +636,12 @@ File: imgs/showcase_chart.png Graphic file (type bmp)
 
 
 [7]
-File: imgs/example_backtest_for_thesis.png Graphic file (type bmp)
-<imgs/example_backtest_for_thesis.png>
-File: imgs/example_for_thesis_v2.png Graphic file (type bmp)
-<imgs/example_for_thesis_v2.png>
+File: imgs/showcase_market_simulation.png Graphic file (type bmp)
+<imgs/showcase_market_simulation.png>
 
 
 [8]
-Overfull \hbox (32.97581pt too wide) in paragraph at lines 372--372
+Overfull \hbox (32.97581pt too wide) in paragraph at lines 367--367
 []\TU/lmtt/m/n/12 entries = (df_temp['outlier_context'] == 'b') & (df_temp['trend'] == 'Uptrend')[] 
  []
 
@@ -666,15 +664,15 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `ma.out' has not changed.
-(rerunfilecheck)             Checksum: 74DF8E5060AB230EED2E153E220393BA;3497.
+(rerunfilecheck)             Checksum: 0295D1221A07AB2E899998BA4947C942;3247.
  ) 
 Here is how much of TeX's memory you used:
- 20114 strings out of 473832
- 412620 string characters out of 5729482
- 898947 words of memory out of 5000000
- 42929 multiletter control sequences out of 15000+600000
+ 20091 strings out of 473832
+ 411970 string characters out of 5729482
+ 898515 words of memory out of 5000000
+ 42907 multiletter control sequences out of 15000+600000
  567318 words of font info for 98 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 83i,9n,131p,2444b,598s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,9n,131p,2444b,384s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on ma.pdf (17 pages).
