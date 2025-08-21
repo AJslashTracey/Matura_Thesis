@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  21 AUG 2025 14:16
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  21 AUG 2025 21:41
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -632,48 +632,52 @@ Overfull \hbox (8.15433pt too wide) in paragraph at lines 69--72
 [7]
 
 [8]
+
+[9]
 File: imgs/showcase_chart.png Graphic file (type bmp)
 <imgs/showcase_chart.png>
 
 
-[9]
+[10]
 File: imgs/showcase_market_simulation.png Graphic file (type bmp)
 <imgs/showcase_market_simulation.png>
 
 
-[10]
-Overfull \hbox (32.97581pt too wide) in paragraph at lines 434--434
+[11]
+Overfull \hbox (32.97581pt too wide) in paragraph at lines 448--448
 []\TU/lmtt/m/n/12 entries = (df_temp['outlier_context'] == 'b') & (df_temp['trend'] == 'Uptrend')[] 
  []
 
 
 
-[11]
+[12]
 File: imgs/dataframeHead.png Graphic file (type bmp)
 <imgs/dataframeHead.png>
 
-
-[12]
 
 [13]
 
 [14]
 
-[15] (./ma.aux)
+[15]
+
+[16]
+
+[17] (./ma.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `ma.out' has not changed.
-(rerunfilecheck)             Checksum: 03697B42688051B98AB61F654C8445B7;2970.
+(rerunfilecheck)             Checksum: 5B83F43D0241ADA3346F22063A91E37F;611.
  ) 
 Here is how much of TeX's memory you used:
- 20091 strings out of 473832
- 411971 string characters out of 5729482
- 898220 words of memory out of 5000000
- 42907 multiletter control sequences out of 15000+600000
+ 20087 strings out of 473832
+ 411917 string characters out of 5729482
+ 895743 words of memory out of 5000000
+ 42903 multiletter control sequences out of 15000+600000
  567318 words of font info for 98 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  83i,9n,131p,2444b,384s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ma.pdf (19 pages).
+Output written on ma.pdf (21 pages).

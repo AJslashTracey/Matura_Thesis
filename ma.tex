@@ -276,7 +276,8 @@ You can start trading crypto with as little as 10 USD no matter if the exchanges
 \section{Methodology}
 
 \subsection*{Project Overview}
-The aim of this project was to design, test, and deploy a fully automated trading strategy for Bitcoin. My development process consisted of four main stages. First, historical price data was collected through a public exchange API \footnote[1]{API stands for Application Programming Interface. It is a tool that allows programs to request and receive specific data from external services in this case, used to fetch real-time Bitcoin price and order book data from the coinbase crypto exchange.} and fetched in one-minute intervals stored inside a database on a PaaS \footnote[2]{Stands for Platform as a Service and it's a cloud computing model which gives developers a platform to host their applications so that they are globally accessible on the internet and run 24/7}.
+The aim of this project was to design, test, and deploy a fully automated trading strategy for Bitcoin.
+My development process consisted of four main stages. First, historical price data was collected to backtest strategies on.
 In the second stage I try to develop an edge by analyzing the data I collected and define a signal from it.
 In the third step, the entry and exit conditions are backtested on several months of historical data using a custom Python-written framework. Finally, if the results met predefined criteria (e.g. acceptable drawdown and stable returns), the strategy was deployed live on a PaaS that connects to the exchanges where the trades are executed in real time.
 
@@ -285,23 +286,36 @@ In the third step, the entry and exit conditions are backtested on several month
 % write about how this has to do with the EMH and why this offer new found edge 
 
 
-I chose to create my own dataset because it offers a key advantage: it allows me to experiment with ideas and patterns that are less likely to have been explored before. This increases the chance of discovering something new that might be missed when using more commonly available datasets.
+I chose to create my own dataset because it offers a key advantage: it allows me to experiment with ideas and patterns that are less likely to have been explored before as I am not limited to the data provided by a platform. 
+This increases the chance of discovering something new that might be missed when using more commonly available datasets.
 
-In my dataset, I calculate the 1\%, 2.5\%, and 5\% delta of the order book. Additionally, I include the current Bitcoin price and the current timestamp. The program I wrote collects data by sending API requests to the Coinbase Exchange API at one-minute intervals. It retrieves both the current Bitcoin price and a full snapshot of the order book at that moment. A complete snapshot is necessary to calculate order book deltas at different percentage depths accurately.
+There are platforms that offer order book delta data for free, but only for discretionary trading (i.e. they only display the data in a chart and do not provide it as a downloadable time series). My idea was to create a Python script which hits the API in one-minute intervals and stores the data inside a Postgres database. I have been hosting the data mining script on my PaaS since March 11, 2025 \href{https://customchart-production.up.railway.app/#}{Live database connection}.
 
-The script is hosted on my PaaS where my database (Postgres) is also hosted where all the data is stored. It has been running 24/7 since March 11, 2025.
-\href{https://customchart-production.up.railway.app/#}{Live datamining progress}
+The creation of the time series was done through a public exchange API\footnote[1]{API stands for Application Programming Interface. It is a tool that allows programs to request and receive specific data from external services—in this case, used to fetch real-time Bitcoin price and order book data from the Coinbase crypto exchange.}, with data fetched in one-minute intervals and stored inside a database on a PaaS\footnote[2]{PaaS stands for Platform as a Service. It is a cloud computing model which gives developers a platform to host their applications so that they are globally accessible on the internet and run 24/7}.
 
+
+In my dataset, I calculate the 1\%, 2.5\%, and 5\% delta of the order book. Additionally, I include the current Bitcoin price and the corresponding timestamp. The program I wrote collects data by sending API requests to the Coinbase Exchange API at one minute intervals. It retrieves both the current Bitcoin price and a full snapshot of the order book at that moment. A complete snapshot is necessary to calculate order book deltas at different percentage depths accurately.
+
+
+\newpage
 The order book delta is calculated by summing the total value of bid orders $n\%$ below the current price ($P_t$) and subtracting the total value of ask orders that are $n\%$ above the current price ($P_t$).
 \begin{equation*}
     \Delta_{OB} = \sum_{i=1}^{n} V_{bid_i} - \sum_{i=1}^{n} V_{ask_i}
 \end{equation*}
 
 
+% The main problem I faced here is that price time series in trading are usually constructed so that each data point represents the closing price of a fixed time interval (e.g. every minute at \texttt{xx:00}). If data points are missing or misaligned (e.g. recorded at \texttt{xx:00:15} instead of \texttt{xx:00:00}), then the time series becomes irregular and any backtest conducted on it would be flawed.
+% A few key things flow together here which make it difficult to get a perfectly aligned timeseries. As python runs in a single threaded \footnote[3]{A python program runs by executing line after line.  Using the thread} 
+
+
+
+
+
+
 
 
 \newpage
-\subsection{Designing and Developing Systems}
+\subsection*{Designing and Developing Systems}
 
 
 The most difficult part of developing a trading algorithm is finding a strategy that is actually worth integrating. As explained in the Efficient Markets section, it is in principle possible to find a strategy that generates profit. The problem is that finding a strategy which consistently makes money and outperforms the market is still extremely difficult.
@@ -337,7 +351,7 @@ The area where I saw the most potential was the order book delta. My hypothesis 
 
 \newpage
 
-\subsection{Searching/Backtesting}
+\subsection*{Searching/Backtesting}
 As stated in my hypothesis: I think that the order book delta directly reflects the relationship between buyers and sellers at specific price levels. A strategy based on a negative order positive order book delta would not include enough context.
 
 \begin{figure}[h]
@@ -388,17 +402,17 @@ On the $X$ axis you can see the sample size and on the $Y$ axis you can see the 
 
 
 \newpage
-\section{Strategy backtest implementation}
+\subsection*{Strategy backtest implementation}
 
 
-\subsection{Sharp ratio}
+\subsubsection*{Sharp ratio}
 The sharp ratio will be the main strategy evaluation metric in my backtest
 \begin{equation}
     \text{Sharpe ratio} = \frac{\text{Average return $t$}}{\text{Standard deviation $t$} \footnote{$t$ is the time span over which we calculate the average return and the standard deviation} }\cdot \sqrt{98280} \footnote{98280 is used to annualize the Sharpe ratio we do this in order to compare the Sharpe ratio with the Sharpe ratio of other strategies or funds}
 \end{equation}
 
 
-\subsection{Backtesting results}
+\subsubsection*{Backtesting results}
 
 \begin{itemize}
     \item average sharpe ratio $1.55$ \footnote{The $\overline{SR}$ is the average Sharpe ratio over different walkforward periods}
@@ -406,7 +420,7 @@ The sharp ratio will be the main strategy evaluation metric in my backtest
 \end{itemize}
 
 
-\subsection{Backtest parameters}
+\subsubsection*{Backtest parameters}
 
 \begin{itemize}
     \item A stop lost of $2\%$
@@ -416,7 +430,7 @@ The sharp ratio will be the main strategy evaluation metric in my backtest
 \end{itemize}
 
 
-\subsection{Code entry conditions}
+\subsubsection*{Code entry conditions}
 
 \begin{verbatim}
 # Entry conditions
@@ -437,11 +451,11 @@ exits = trendChange | time_exit
 
 
 \newpage
-\subsection{Entry conditions calculations}
+\subsubsection*{Entry conditions calculations}
 I have to give more context about the entry conditions. $df\_temp$ is just a variable to which I assign a timeseries dataframe \footnote{A dataframe is a two dimensional array with rows and columns} with different kind of metrics inside of it. The entry conditions are defined by two boolean conditions:
 
 
-\subsubsection{Outlier context}
+\subsubsection*{Outlier context}
 
 
 \begin{verbatim}
@@ -462,11 +476,11 @@ As shown in Figure \ref{fig:outlier_context}, the dataframe contains various met
 The column $is\_outlier$ is a binary signal column if the current current order book delta value $\Delta_t$ is further than two standard deviations from the mean $\overline{\Delta}_{1440}$ of the order book delta.
 $outlier\_context$ is a string column that has a value of \textbf{b} if $\Delta_t$ has a postive Z score and \textbf{s} if it has a negative Z score.
 
-\subsection{Market Structure and Trend Identification}
+\subsubsection*{Market Structure and Trend Identification}
 
 To identify trends in Bitcoin's price, we use a combination of price movement analysis and moving averages. The main challenge is to distinguish between real trends and temporary price movements. We start by converting our 1-minute price data into OHLC \footnote{OHLC stands for Open, High, Low, and Close. It is a type of data that is used to represent the price action of an asset over a period of time and is also known as a candlestick chart.} 240 minute data to better see the overall market direction.
 
-\subsubsection{Price Movement Analysis}
+\subsubsection*{Price Movement Analysis}
 The core of our trend analysis looks at how price moves over time. We use two main indicators:
 
 1. The derivative (rate of change) of a moving average:
@@ -485,7 +499,7 @@ We compare current prices with previous highs and lows using a window of time ($
 \end{cases}
 \end{equation*}
 
-\subsubsection{Support and Resistance}
+\subsubsection*{Support and Resistance}
 We also look at support and resistance levels to strengthen our trend analysis:
 
 \begin{itemize}
@@ -495,7 +509,7 @@ We also look at support and resistance levels to strengthen our trend analysis:
 
 The slopes of these levels help us determine trend strength. For example, rising support and resistance levels indicate a strong uptrend, while falling levels suggest a downtrend.
 
-\subsubsection{Final Trend Determination}
+\subsubsection*{Final Trend Determination}
 To make the final decision about the trend, we combine all these factors:
 \begin{equation*}
 \text{Final Trend} = \begin{cases}
@@ -512,34 +526,27 @@ This approach helps us filter out market noise and identify real trading opportu
 
 
 
+\newpage
+\section{Results}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+\newpage
+\section{Discussion}
 
 
 \newpage
-\subsection{Related Work}
-Discussion of related work.
-
-
-\newpage
-\section{Methodology}
-Your methodology description.
+\section{Appendix}
 
 
 
-\newpage
+
+
+
+
+
+
+
+
+
 
 \end{document}
 

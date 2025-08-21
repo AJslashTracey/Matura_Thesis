@@ -1,18 +1,6 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {section}{\numberline {2}Theoretical Background}{2}{section.2}%
 \contentsline {section}{\numberline {3}Methodology}{7}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Designing and Developing Systems}{8}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Searching/Backtesting}{9}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Strategy backtest implementation}{11}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Sharp ratio}{11}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Backtesting results}{11}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Backtest parameters}{11}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Code entry conditions}{11}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Entry conditions calculations}{12}{subsection.4.5}%
-\contentsline {subsubsection}{\numberline {4.5.1}Outlier context}{12}{subsubsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.6}Market Structure and Trend Identification}{12}{subsection.4.6}%
-\contentsline {subsubsection}{\numberline {4.6.1}Price Movement Analysis}{12}{subsubsection.4.6.1}%
-\contentsline {subsubsection}{\numberline {4.6.2}Support and Resistance}{13}{subsubsection.4.6.2}%
-\contentsline {subsubsection}{\numberline {4.6.3}Final Trend Determination}{13}{subsubsection.4.6.3}%
-\contentsline {subsection}{\numberline {4.7}Related Work}{14}{subsection.4.7}%
-\contentsline {section}{\numberline {5}Methodology}{15}{section.5}%
+\contentsline {section}{\numberline {4}Results}{15}{section.4}%
+\contentsline {section}{\numberline {5}Discussion}{16}{section.5}%
+\contentsline {section}{\numberline {6}Appendix}{17}{section.6}%
