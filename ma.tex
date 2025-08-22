@@ -407,10 +407,11 @@ Trend identification process.
 
 \subsection*{Strategy Search Methodology}
 
-The strategy development process employs a unique two-phase approach, with the first phase focused on discovering potential edge through extensive randomized testing before committing to detailed backtesting.
+My strategy search process consists out of two parts. First I search for a potential edge in the entry condition. Then I backtest the strategy with the entry condition that has the best performance in my randomized testing.
+
 
 \subsubsection*{Initial Edge Discovery}
-Instead of immediately running a complete backtest on a single strategy implementation, I wrote a custom python frame work which first tests whether a potential entry condition has any statistical merit \href{https://github.com/AJslashTracey/signal_search_strategy}{Signal Search framework}. This is accomplished by running 1000 different variations of the same base strategy. Each variation differs not in its entry condition, but in which specific entry signals it takes.
+Instead of immediately running a complete backtest on a single strategy implementation, I wrote a custom python frame work which first tests whether a potential entry condition has any statistical merit. This is accomplished by running 1000 different variations of the same base strategy. Each variation differs not in its entry condition, but in which specific entry signals it takes.
 
 For example, if the base entry condition identifies 1000 potential trade entries over the historical data, each strategy variation will randomly sample different subsets of these entries (e.g., taking 20%, 80%, or 100% of all signals). This creates 1000 unique strategies that all use the same entry condition but trade different specific instances of it.
 
@@ -426,6 +427,7 @@ This methodology acts as a powerful filter - only if we see consistent positive 
 
 This approach is particularly powerful because it separates the question of whether an edge exists from the question of how to best exploit that edge. Only after establishing statistical evidence of an edge through this randomized testing do we move forward with detailed backtesting and optimization of a specific implementation.
 
+The custom Python framework which tests different holding periods and sampling percentages is available on my github page \href{https://github.com/AJslashTracey/signal_search_strategy}{Signal Search framework}. I used the Vectorbt to implement fees and slippage and toke some logic out of a Repository I found inside of the Vectorbt github documentation which appliesthe same logic to test different strategies by randomly changing entry conditions \href{https://github.com/polakowo/vectorbt}{Vectorbt Documentation}.
 
 
 
