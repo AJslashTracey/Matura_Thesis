@@ -305,7 +305,7 @@ The order book delta is calculated by summing the total value of bid orders $n\%
     \Delta_{OB} = \sum_{i=1}^{n} V_{bid_i} - \sum_{i=1}^{n} V_{ask_i}
 \end{equation*}
 
-Orderbook delta is already a known metric 
+I got the formular from: \href{https://academy.hyblockcapital.com/indicators/orderbook/bids-and-asks-delta?utm_source=chatgpt.com}{Hypeblock capital}
 
 % The main problem I faced here is that price time series in trading are usually constructed so that each data point represents the closing price of a fixed time interval (e.g. every minute at \texttt{xx:00}). If data points are missing or misaligned (e.g. recorded at \texttt{xx:00:15} instead of \texttt{xx:00:00}), then the time series becomes irregular and any backtest conducted on it would be flawed.
 % A few key things flow together here which make it difficult to get a perfectly aligned timeseries. As python runs in a single threaded \footnote[3]{A python program runs by executing line after line.  Using the thread} 
@@ -334,7 +334,7 @@ Running the algorithm on my personal computer is not an option as it would requi
 
 
 \newpage
-\subsection*{Designing and Developing Systems}
+\subsection*{Defining goals}
 
 
 The most difficult part of developing a trading algorithm is finding a strategy that is actually worth integrating. As explained in the Efficient Markets section, it is in principle possible to find a strategy that generates profit. The problem is that finding a strategy which consistently makes money and outperforms the market is still extremely difficult.
@@ -371,7 +371,7 @@ The area where I saw the most potential was the order book delta. My hypothesis 
 \newpage
 
 \subsection*{Searching/Backtesting}
-As stated in my hypothesis: I think that the order book delta directly reflects the relationship between buyers and sellers at specific price levels. A strategy based on a negative order positive order book delta would not include enough context.
+Now creating my own orderbook delta time series has a reason as I think: that the order book delta directly reflects the relationship between buyers and sellers at specific price levels. I will run multiple tests as hoping to find a realtionship between the order book delta and the price action.
 
 \begin{figure}[h]
     \centering
@@ -399,14 +399,38 @@ This relationship between order book delta and price action is particularly usef
 
 
 \newpage
-\textbf{Example:}
+\subsection*{Not stattionary data}
+Trend identification process.
 
-\begin{verbatim}
-    #Example for entry signals in the code
-    outlier_mask = (df['trend'] == 'uptrend') & (df['is_outlier'] == 1)
-\end{verbatim}
 
-Then I test the strategy on one month of data to evaluate whether it shows any potential. I consider a strategy to have potential if it is around break-even \footnote{Break-even is the point where the total profit equals the total loss. In other words, it's the point where the strategy neither makes nor loses money.} or slightly profitable and achieves a Sharpe ratio between 1 and 2.
+\newpage
+
+\subsection*{Strategy Search Methodology}
+
+The strategy development process employs a unique two-phase approach, with the first phase focused on discovering potential edge through extensive randomized testing before committing to detailed backtesting.
+
+\subsubsection*{Initial Edge Discovery}
+Instead of immediately running a complete backtest on a single strategy implementation, I wrote a custom python frame work which first tests whether a potential entry condition has any statistical merit \href{https://github.com/AJslashTracey/signal_search_strategy}{Signal Search framework}. This is accomplished by running 1000 different variations of the same base strategy. Each variation differs not in its entry condition, but in which specific entry signals it takes.
+
+For example, if the base entry condition identifies 1000 potential trade entries over the historical data, each strategy variation will randomly sample different subsets of these entries (e.g., taking 20%, 80%, or 100% of all signals). This creates 1000 unique strategies that all use the same entry condition but trade different specific instances of it.
+
+The key insight of this approach is that if the entry condition contains no edge, the performance across these 1000 variations should be random. However, if there is a genuine edge in the entry condition, we should see consistent performance characteristics across the variations, even though each strategy trades different specific signals.
+
+\subsubsection*{Parameter Space Exploration}
+To further validate any potential edge, each of the 1000 variations is tested across different holding periods. This adds another dimension to the analysis - not only are we testing if the entry condition has merit, but also how long positions should be held to best capture any edge.
+
+The process runs these tests in batches of 100 strategies at a time to manage computational resources efficiently. For each combination of sampling percentage and holding period, the system calculates key metrics averaged across all strategy variations. This provides robust statistical evidence of whether the entry condition has merit, as we're looking at aggregate performance across thousands of different implementations rather than a single backtest that might be influenced by luck.
+
+\subsubsection*{Statistical Validation Before Detailed Backtesting}
+This methodology acts as a powerful filter - only if we see consistent positive characteristics across the 1000 variations do we proceed to detailed backtesting. This prevents wasting time on detailed optimization of strategies that have no fundamental edge. It's a way of asking "does this entry condition have any merit?" before asking "how can we best implement this entry condition?"
+
+This approach is particularly powerful because it separates the question of whether an edge exists from the question of how to best exploit that edge. Only after establishing statistical evidence of an edge through this randomized testing do we move forward with detailed backtesting and optimization of a specific implementation.
+
+
+
+
+
+
 
 \textbf{Results:}
 
