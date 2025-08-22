@@ -193,7 +193,13 @@ decisions are frequently influenced by political considerations rather than soun
 
 In 2009 a group or individual known as Satoshi Nakamoto published the White Paper of Bitcoin. The paper outlines the concept of a decentralized digital currency that would not be controlled by any central authority. Bitcoin is decentralized, meaning that no single entity controls the network. The money supply is limited to 21 million Bitcoins. Anyone with internet access can use Bitcoin. Transactions are immutable and cannot be changed once confirmed. Bitcoin is borderless and can be sent anywhere in the world.
 
-
+In the figure \ref{fig:bitcoin_chart} we can see the price of Bitcoin over the years. The Y-axis is logarithmic to better visualize the strong increase in price. The X-axis shows the days since 2010.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{imgs/bitcoin_price_over_years.png}
+    \caption{Bitcoin price chart}
+    \label{fig:bitcoin_chart}
+\end{figure}
 
 
 
@@ -299,6 +305,7 @@ The order book delta is calculated by summing the total value of bid orders $n\%
     \Delta_{OB} = \sum_{i=1}^{n} V_{bid_i} - \sum_{i=1}^{n} V_{ask_i}
 \end{equation*}
 
+Orderbook delta is already a known metric 
 
 % The main problem I faced here is that price time series in trading are usually constructed so that each data point represents the closing price of a fixed time interval (e.g. every minute at \texttt{xx:00}). If data points are missing or misaligned (e.g. recorded at \texttt{xx:00:15} instead of \texttt{xx:00:00}), then the time series becomes irregular and any backtest conducted on it would be flawed.
 % A few key things flow together here which make it difficult to get a perfectly aligned timeseries. As python runs in a single threaded \footnote[3]{A python program runs by executing line after line.  Using the thread} 
@@ -318,7 +325,10 @@ In order to buy and sell Bitcoin we need an exchange to trade on and the exchang
 Running the algorithm on my personal computer is not an option as it would require me to have my computer running 24/7. This is not feasible and would also require me to have a stable internet connection. For this reason I need a hosting service that can run my algorithm 24/7. I chose Railway since it is very simple to use and I already know how to host my code there as I have been using it for a long time for other projects. Railway is a PaaS (Platform as a Service) which allows me to host my code on a server and run it remotely.
 
 
-\subsubsection*{Python Libaries}
+
+
+
+
 
 
 
