@@ -186,29 +186,41 @@ It is possible to make a profit in the markets but it is not easy, not for every
 
 As my algorithm is trades the Bitcoin/USD pair, I want to explain what Bitcoin is.
 
-Before explaining what Bitcoin is, we need to understand the fundamental problems with fiat money\footnote{Fiat money is a form of money that is not backed by a physical asset, but by the government or central bank that issues it.}. 
-The core issue lies in the centralization, where goverments and central banks have complete control over the money supply. This control allows them to print money as needed increasing the money supply, oftean leading to inflation. A decrease in purchasing power devalues people's savings. Furthermore, money policy decisions are often influenced from political considerations over economic principles leading to poor economic outcomes. The entire system relies on the trust in the goverment controlling the money supply and their economical management abilities. 
-
-Bitcoin offers a solution to these problems by being decentralized. i.e. no central authority controls it. The money supply is limited to 21 million Bitcoins. Anyone with internet access can use Bitcoin. Transactions are immutable and cannot be changed once confirmed. Bitcoin is borderless and can be sent anywhere in the world.
-
-\subsubsection*{Investment demand}
+Before explaining what Bitcoin is, it is important to first understand the fundamental problems of fiat money. 
+The central issue lies in the centralization: governments and central banks hold complete control over the money supply. This control enables them to print money at will, therebyincreasing the supply and often causing inflation. As a result, the purchasing power of money decreases, which devalues people’s savings. In addition, monetary policy \footnote[1]{actions undertaken by a nation's central bank to manage the money supply and credit conditions to achieve macroeconomic goals} 
+decisions are frequently influenced by political considerations rather than sound economic principles, leading to poor economic outcomes. Ultimately, the system depends entirely on trust in governments to manage the money supply responsibly.
 
 
+In 2009 a group or individual known as Satoshi Nakamoto published the White Paper of Bitcoin. The paper outlines the concept of a decentralized digital currency that would not be controlled by any central authority. Bitcoin is decentralized, meaning that no single entity controls the network. The money supply is limited to 21 million Bitcoins. Anyone with internet access can use Bitcoin. Transactions are immutable and cannot be changed once confirmed. Bitcoin is borderless and can be sent anywhere in the world.
 
 
 
 
-\subsubsection*{Key Properties of Bitcoin}
 
-Bitcoin has several unique properties that differentiate it from traditional currencies:
+\newpage
 
-\begin{itemize}
-    \item \textbf{Decentralized:} No central authority controls Bitcoin.
-    \item \textbf{Limited Supply:} Only 21 million Bitcoins will ever exist.
-    \item \textbf{Permissionless:} Anyone with internet access can use Bitcoin.
-    \item \textbf{Immutable:} Transactions cannot be changed once confirmed.
-    \item \textbf{Borderless:} Bitcoin can be sent anywhere in the world.
-\end{itemize}
+\subsection*{Why trade Bitcoin?}
+To prevent any misunderstanding, I want to clarify that I chose Bitcoin as an underlying asset for my trading strategy out of practicality and how my personal opinion about the asset is irrelevant. I read a few books explaining the reason for the creation of Bitcoin and the fundamentals behind it. I personally believe in the narrative of Bitcoin as a decentralized and inflation-secure asset. However, this belief of mine plays no role in my trading algorithm. The goal of the trading algorithm is to react to signals which indicate market inefficiencies. These market inefficiencies can occur on any kind of asset in different magnitudes.
+\subsubsection*{Data accessibility}
+In the crypto market, real time and historical data is mostly free and accessible freely through public APIs. An API is a tool that allows programs to request and receive specific data from external services in this case, used to fetch real-time Bitcoin price and order book data from the coinbase crypto exchange. The data I based my strategy on is totaly free I just had to create my own timeseries in the traditional market I would have paid thousands of dollars for the data.
+
+\subsubsection*{Modern API infrastructure}
+Some crypto exchanges offer modern API infastrucutre which allow direct automate in trading. The exchange I chose Hyperliquid offers world class python implementation of their API. This allows me to carry out trades with a simple self written python script that implements their python sdk. \footnote{A python sdk is a software development kit for python. It is a collection of tools and libraries that allow developers to interact with a specific API.}
+
+\subsubsection*{Entry barriers}
+You can start trading crypto with as little as 10 USD no matter if the exchanges offers automated trading or just manual executed trades. While in the traditional market you need atleast 10'000 USD to open an account for on a broker which offers automated strategy access.
+
+
+
+
+
+
+
+
+
+
+
+
 
 These features make Bitcoin an interesting asset, both from a technological and financial perspective.
 
@@ -247,22 +259,6 @@ If the backtesting results are promising and the strategy appears robust, it can
 Throughout this process, the focus remains on consistency and measurable results. Unlike human decision-making, a systematic strategy must behave identically entry and exit conditions. This makes it possible to evaluate, improve and automate trading in a transparent way.
 
 
-
-
-
-
-\newpage
-
-\subsection*{Why trade Bitcoin?}
-To prevent any misunderstanding, I want to clarify that I chose Bitcoin as an underlying asset for my trading strategy out of practicality and how my personal opinion about the asset is irrelevant. I read a few books explaining the reason for the creation of Bitcoin and the fundamentals behind it. I personally believe in the narrative of Bitcoin as a decentralized and inflation-secure asset. However, this belief of mine plays no role in my trading algorithm. The goal of the trading algorithm is to react to signals which indicate market inefficiencies. These market inefficiencies can occur on any kind of asset in different magnitudes.
-\subsubsection*{Data accessibility}
-In the crypto market, real time and historical data is mostly free and accessible freely through public APIs. An API is a tool that allows programs to request and receive specific data from external services in this case, used to fetch real-time Bitcoin price and order book data from the coinbase crypto exchange. The data I based my strategy on is totaly free I just had to create my own timeseries in the traditional market I would have paid thousands of dollars for the data.
-
-\subsubsection*{Modern API infrastructure}
-Some crypto exchanges offer modern API infastrucutre which allow direct automate in trading. The exchange I chose Hyperliquid offers world class python implementation of their API. This allows me to carry out trades with a simple self written python script that implements their python sdk. \footnote{A python sdk is a software development kit for python. It is a collection of tools and libraries that allow developers to interact with a specific API.}
-
-\subsubsection*{Entry barriers}
-You can start trading crypto with as little as 10 USD no matter if the exchanges offers automated trading or just manual executed trades. While in the traditional market you need atleast 10'000 USD to open an account for on a broker which offers automated strategy access.
 
 
 
@@ -310,6 +306,19 @@ The order book delta is calculated by summing the total value of bid orders $n\%
 
 
 
+
+\newpage
+\subsection*{Framework}
+Now before diving into the development of a systematic trading strategy I want to explain what kind of services we need and how we can use them to our advantage.
+
+\subsubsection*{Broker}
+In order to buy and sell Bitcoin we need an exchange to trade on and the exchange should offer a modern API infrastructure, which allows my trading algorithm to send commands to the exchange to sell and buy Bitcoin. The most fitting exchange for this is Hyperliquid. As it offers a modern API infrastructure and a very comprehensive documentation with a lot of examples \href{https://github.com/hyperliquid-dex/hyperliquid-python-sdk}{Hyperliquid Python SDK}.   
+
+\subsubsection*{Hosting services}
+Running the algorithm on my personal computer is not an option as it would require me to have my computer running 24/7. This is not feasible and would also require me to have a stable internet connection. For this reason I need a hosting service that can run my algorithm 24/7. I chose Railway since it is very simple to use and I already know how to host my code there as I have been using it for a long time for other projects. Railway is a PaaS (Platform as a Service) which allows me to host my code on a server and run it remotely.
+
+
+\subsubsection*{Python Libaries}
 
 
 
