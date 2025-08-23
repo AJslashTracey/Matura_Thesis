@@ -418,7 +418,6 @@ Instead of immediately running a complete backtest on a single strategy implemen
 For example, if the base entry condition identifies 1000 potential trade entries over the historical data, each strategy variation will randomly sample different subsets of these entries (e.g., taking 20\%, 80\%, or 100\% of all signal s). This creates 1000 unique strategies that all use the same entry condition but trade different specific instances of it.
 
 The key insight of this approach is that if the entry condition contains no edge, the performance across these 1000 variations should be random. However, if there is a genuine edge in the entry condition, we should see consistent performance characteristics across the variations, even though each strategy trades different specific signals.
-\newpage
 
 \subsubsection*{Parameter Space Exploration}
 To further validate any potential edge, each of the 1000 variations is tested across different holding periods. This adds another dimension to the analysis - not only are we testing if the entry condition has merit, but also how long positions should be held to best capture any edge.
