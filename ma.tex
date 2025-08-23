@@ -420,16 +420,26 @@ For example, if the base entry condition identifies 1000 potential trade entries
 The key insight of this approach is that if the entry condition contains no edge, the performance across these 1000 variations should be random. However, if there is a genuine edge in the entry condition, we should see consistent performance characteristics across the variations, even though each strategy trades different specific signals.
 
 \subsubsection*{Parameter Space Exploration}
-To further validate any potential edge, each of the 1000 variations is tested across different holding periods. This adds another dimension to the analysis - not only are we testing if the entry condition has merit, but also how long positions should be held to best capture any edge.
+To further validate any potential edge, each of the 1000 variations is tested across different holding periods (periods between open and close of trade). This adds another dimension to the analysis, not only are we testing if the entry condition has merit \footnote[1]{How much the test improves decision-making for a user compared to decisions made before the test.}, but also how long positions should be held to best capture any edge.
 
-The process runs these tests in batches of 100 strategies at a time to manage computational resources efficiently. For each combination of sampling percentage and holding period, the system calculates key metrics averaged across all strategy variations. This provides robust statistical evidence of whether the entry condition has merit, as we're looking at aggregate performance across thousands of different implementations rather than a single backtest that might be influenced by luck.
+The process runs these tests in batches of 100 strategies at a time to manage computational resources efficiently (since my PC only has 32 gb of ram). For each combination of sampling percentage and holding period, the system calculates key metrics averaged across all strategy variations. This provides robust statistical evidence of whether the entry condition has merit, as we're looking at aggregate performance across thousands of different implementations rather than a single backtest that might be influenced by luck.
 
 \subsubsection*{Statistical Validation Before Detailed Backtesting}
-This methodology acts as a powerful filter - only if we see consistent positive characteristics across the 1000 variations do we proceed to detailed backtesting. This prevents wasting time on detailed optimization of strategies that have no fundamental edge. It's a way of asking "does this entry condition have any merit?" before asking "how can we best implement this entry condition?"
+This methodology acts as a powerful filter, only if we see consistent positive characteristics across the 1000 variations do we proceed to detailed backtesting. This prevents wasting time on detailed optimization of strategies that have no fundamental edge. It's a way of asking "does this entry condition have any merit?" before asking "how can we best implement this entry condition?"
 
 This approach is particularly powerful because it separates the question of whether an edge exists from the question of how to best exploit that edge. Only after establishing statistical evidence of an edge through this randomized testing do we move forward with detailed backtesting and optimization of a specific implementation.
 
 The custom Python framework which tests different holding periods and sampling percentages is available on my github page \href{https://github.com/AJslashTracey/signal_search_strategy}{Signal Search framework}. I used the Vectorbt to implement fees and slippage and toke some logic out of a Repository I found inside of the Vectorbt github documentation which appliesthe same logic to test different strategies by randomly changing entry conditions \href{https://github.com/polakowo/vectorbt}{Vectorbt Documentation}.
+
+
+\subsubsection*{Walk-forward testing}
+Even if we search for a strategy by using this multi parameter testing framework. In order to prevent to being lucky with a good looking parameter combination I run the same strategy on new data. This way I can see if the strategy is still profitable and if it is I can be sure that it is not just a lucky hit.
+First test is done on 40'000 minutes of data if the strategy is profitable I run it on 60'000 minutes of data. If the strategy is still profitable I run it on 200'000 minutes of data. 95\% of the time the strategy goes from a good looking strategy to a bad one.
+
+
+
+
+
 
 
 
