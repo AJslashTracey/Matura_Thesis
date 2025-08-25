@@ -187,7 +187,7 @@ It is possible to make a profit in the markets but it is not easy, not for every
 As my algorithm is trades the Bitcoin/USD pair, I want to explain what Bitcoin is.
 
 Before explaining what Bitcoin is, it is important to first understand the fundamental problems of fiat money. 
-The central issue lies in the centralization: governments and central banks hold complete control over the money supply. This control enables them to print money at will, therebyincreasing the supply and often causing inflation. As a result, the purchasing power of money decreases, which devalues people’s savings. In addition, monetary policy \footnote[1]{actions undertaken by a nation's central bank to manage the money supply and credit conditions to achieve macroeconomic goals} 
+The central issue lies in the centralization: governments and central banks hold complete control over the money supply. This control enables them to print money at will, there by increasing the supply and often causing inflation. As a result, the purchasing power of money decreases, which devalues people’s savings. In addition, monetary policy \footnote[1]{actions undertaken by a nation's central bank to manage the money supply and credit conditions to achieve macroeconomic goals} 
 decisions are frequently influenced by political considerations rather than sound economic principles, leading to poor economic outcomes. Ultimately, the system depends entirely on trust in governments to manage the money supply responsibly.
 
 
@@ -231,7 +231,6 @@ You can start trading crypto with as little as 10 USD no matter if the exchanges
 
 
 These features make Bitcoin an interesting asset, both from a technological and financial perspective.
-
 
 
 
@@ -413,11 +412,13 @@ My strategy search process consists out of two parts. First I search for a poten
 
 
 \subsubsection*{Initial Edge Discovery}
-Instead of immediately running a complete backtest on a single strategy implementation, I wrote a custom python frame work which first tests whether a potential entry condition appears to have good average returns. This is accomplished by running 1000 different variations of the same base strategy. Each variation differs not in its entry condition, but in which specific entry signals it takes.
+Instead of immediately running a complete backtest on a single strategy implementation, I wrote a custom python frame work which first tests whether a potential entry condition appears to have good average returns. This is accomplished by running 1000 different variations of the same base strategy. Each variation differs in entry condition by testing different holding periods for a trade.
 
 For example, if the base entry condition identifies 1000 potential trade entries over the historical data, each strategy variation will randomly sample different subsets of these entries (e.g., taking 20\%, 80\%, or 100\% of all signal s). This creates 1000 unique strategies that all use the same entry condition but trade different specific instances of it.
 
-The key insight of this approach is that if the entry condition contains no edge, the performance across these 1000 variations should be random. However, if there is a genuine edge in the entry condition, we should see consistent performance characteristics across the variations, even though each strategy trades different specific signals.
+The key insight of this approach is that if the entry condition contains no edge, the performance across the different holding periods and sample sizes should have a negative return. Now the question might come up why not revers a signal? For a reversed signal to be profitable, the absolute value of the average return per trade has to exceed the transaction cost (fees and slippage). 
+
+However, if there is a genuine edge in the entry condition, we should see consistent performance characteristics across the variations, even though each strategy trades different specific signals.
 
 \subsubsection*{Parameter Space Exploration}
 To further validate any potential edge, each of the 1000 variations is tested across different holding periods (periods between open and close of trade). This adds another dimension to the analysis, not only are we testing if the entry condition has merit \footnote[1]{How much the test improves decision-making for a user compared to decisions made before the test.}, but also how long positions should be held to best capture any edge.
