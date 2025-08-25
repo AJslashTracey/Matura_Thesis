@@ -434,6 +434,38 @@ First test is done on 40'000 minutes of data if the strategy is profitable I run
 On the $X$ axis you can see the sample size and on the $Y$ axis you can see the average return over he different test runs.
 
 
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\subsection*{Strategy example}
+For showcasing purposes I will run a backtest on a strategy which is based on two different moving averages. We buy once the short moving average crosses the long moving average from below and sell once the short moving average crosses the long moving average from above.
+
+
+\subsubsection*{Python implementation}
+\begin{lstlisting}[language=Python]
+import vectorBT as vbt
+fast_ma = vbt.MA.run(price, 10)
+slow_ma = vbt.MA.run(price, 50)
+entries = fast_ma.ma_crossed_above(slow_ma)
+exits = fast_ma.ma_crossed_below(slow_ma)
+\end{lstlisting}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imgs/strat_show_case_btc.png}
+    \caption{MA cross strategy}
+    \label{fig:ma_cross_strategy}
+\end{figure}
+
 \newpage
 
 \subsection*{Searching a strategy}
@@ -462,28 +494,6 @@ This relationship between order book delta and price action is particularly usef
 \end{itemize}
 
 
-
-\newpage
-\subsection*{Strategy example}
-For showcasing purposes I will run a backtest on a strategy which is based on two different moving averages. We buy once the short moving average crosses the long moving average from below and sell once the short moving average crosses the long moving average from above.
-
-
-\subsubsection*{Python implementation}
-\begin{lstlisting}[language=Python]
-fast_ma = vbt.MA.run(price, 10)
-slow_ma = vbt.MA.run(price, 50)
-entries = fast_ma.ma_crossed_above(slow_ma)
-exits = fast_ma.ma_crossed_below(slow_ma)
-\end{lstlisting}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.7\textwidth]{imgs/strat_show_case_btc.png}
-    \caption{MA cross strategy}
-    \label{fig:ma_cross_strategy}
-\end{figure}
-
-\newpage
 
 
 
@@ -535,14 +545,14 @@ It0describes how much return we get for the risk we take. This can be calculated
 
 \begin{lstlisting}[language=Python]
     # Entry conditions
-    entries = (df_temp['outlier_context'] == 'b') & (df_temp['trend'] == 'Uptrend')
+    entries = (df['context'] == 'b') & (df['trend'] == 'Uptrend')
     
     
     # Exit after 120 minutes
     time_exit = exitSlots.shift(120).fillna(False)
     
     # Exit on trend change
-    trendChange = (df_temp['trend'] != df_temp['trend'].shift(1))
+    trendChange = (df['trend'] != df['trend'].shift(1))
     
     #Or statment to exit
     exits = trendChange | time_exit
