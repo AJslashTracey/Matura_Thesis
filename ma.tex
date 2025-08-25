@@ -43,7 +43,7 @@
     \vspace{1cm}
     \Large Submitted by:\\
     \vspace{0.5cm}
-    \textbf{Juri Stoffers}\\
+    \textbf{x}\\
     \vspace{2cm}
     \Large Supervised by:\\
     \vspace{0.5cm}
@@ -466,10 +466,15 @@ On the $X$ axis you can see the sample size and on the $Y$ axis you can see the 
 
 
 \subsubsection*{Sharp ratio}
-The sharp ratio will be the main strategy evaluation metric in my backtest
+The sharp ratio will be used as the main strategy evaluation metric between different backtesting periods and different strategy.
+It0describes how much return we get for the risk we take. This can be calculated by dividing the average return over a period $t$ by the standard deviation of the return over the same period.
+
 \begin{equation}
     \text{Sharpe ratio} = \frac{\text{Average return $t$}}{\text{Standard deviation $t$} \footnote{$t$ is the time span over which we calculate the average return and the standard deviation} }\cdot \sqrt{98280} \footnote{98280 is used to annualize the Sharpe ratio we do this in order to compare the Sharpe ratio with the Sharpe ratio of other strategies or funds}
 \end{equation}
+
+
+
 
 
 \subsubsection*{Backtesting results}
