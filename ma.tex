@@ -15,7 +15,7 @@
 \renewcommand{\baselinestretch}{1.5}
 \usepackage{fontspec}
 \setmainfont{Arial}
-
+\usepackage{listings}
 
 
 \begin{document}
@@ -357,8 +357,6 @@ Before I start searching, I need to define what I am searching for. To do this, 
 The area where I saw the most potential was the order book delta. My hypothesis was that, since it directly reflects the relationship between buyers and sellers at specific price levels, it could serve as the basis for a statistical signal. By running volatility and directional bias tests under various order book delta conditions, I aimed to identify patterns that might be predictive of short-term price movements.
 
 
-
-
 % Smart strategy explination  why a goal is neede
 % from where did I take inspiration
 % book I read
@@ -370,31 +368,6 @@ The area where I saw the most potential was the order book delta. My hypothesis 
 
 
 \newpage
-
-\subsection*{Searching/Backtesting}
-Now creating my own orderbook delta time series has a reason as I think: that the order book delta directly reflects the relationship between buyers and sellers at specific price levels. I will run multiple tests as hoping to find a realtionship between the order book delta and the price action.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.95\textwidth]{imgs/showcase_chart.png}
-    \caption{order book delta visualization showing price action (top) and corresponding delta values (bottom)}
-    \label{fig:order book_delta}
-\end{figure}
-
-As shown in Figure \ref{fig:order book_delta}, the order book delta provides valuable insights at extreme values. The chart displays two key components:
-\begin{itemize}
-    \item The price action (top chart) shows the actual Bitcoin price movements
-    \item The order book delta (bottom chart) represents the imbalance between buy and sell orders
-\end{itemize}
-
-A high order book delta value indicates substantial buy orders below the current price. This creates a strong support level, as sellers would need significant pressure to break through these orders. Even if sellers manage to push through, these accumulated buy orders often create buying pressure that can lead to price support or potential rebounds.
-
-This relationship between order book delta and price action is particularly useful when:
-\begin{itemize}
-    \item The delta reaches extreme values, indicating significant order imbalance
-    \item There's a clear divergence between price action and order book delta
-    \item Multiple timeframe analysis shows consistent patterns
-\end{itemize}
 
 
 
@@ -461,6 +434,68 @@ First test is done on 40'000 minutes of data if the strategy is profitable I run
 On the $X$ axis you can see the sample size and on the $Y$ axis you can see the average return over he different test runs.
 
 
+\newpage
+
+\subsection*{Searching a strategy}
+Now creating my own orderbook delta time series has a reason as I think: that the order book delta directly reflects the relationship between buyers and sellers at specific price levels. I will run multiple tests as hoping to find a realtionship between the order book delta and the price action.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{imgs/showcase_chart.png}
+    \caption{order book delta visualization showing price action (top) and corresponding delta values (bottom)}
+    \label{fig:order book_delta}
+\end{figure}
+
+As shown in Figure \ref{fig:order book_delta}, the order book delta provides valuable insights at extreme values. The chart displays two key components:
+\begin{itemize}
+    \item The price action (top chart) shows the actual Bitcoin price movements
+    \item The order book delta (bottom chart) represents the imbalance between buy and sell orders
+\end{itemize}
+
+A high order book delta value indicates substantial buy orders below the current price. This creates a strong support level, as sellers would need significant pressure to break through these orders. Even if sellers manage to push through, these accumulated buy orders often create buying pressure that can lead to price support or potential rebounds.
+
+This relationship between order book delta and price action is particularly useful when:
+\begin{itemize}
+    \item The delta reaches extreme values, indicating significant order imbalance
+    \item There's a clear divergence between price action and order book delta
+    \item Multiple timeframe analysis shows consistent patterns
+\end{itemize}
+
+
+
+\newpage
+\subsection*{Strategy example}
+For showcasing purposes I will run a backtest on a strategy which is based on two different moving averages. We buy once the short moving average crosses the long moving average from below and sell once the short moving average crosses the long moving average from above.
+
+
+\subsubsection*{Python implementation}
+\begin{lstlisting}[language=Python]
+fast_ma = vbt.MA.run(price, 10)
+slow_ma = vbt.MA.run(price, 50)
+entries = fast_ma.ma_crossed_above(slow_ma)
+exits = fast_ma.ma_crossed_below(slow_ma)
+\end{lstlisting}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{imgs/strat_show_case_btc.png}
+    \caption{MA cross strategy}
+    \label{fig:ma_cross_strategy}
+\end{figure}
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
 
 \newpage
 \subsection*{Strategy backtest implementation}
@@ -498,20 +533,23 @@ It0describes how much return we get for the risk we take. This can be calculated
 
 \subsubsection*{Code entry conditions}
 
-\begin{verbatim}
-# Entry conditions
-entries = (df_temp['outlier_context'] == 'b') & (df_temp['trend'] == 'Uptrend')
+\begin{lstlisting}[language=Python]
+    # Entry conditions
+    entries = (df_temp['outlier_context'] == 'b') & (df_temp['trend'] == 'Uptrend')
+    
+    
+    # Exit after 120 minutes
+    time_exit = exitSlots.shift(120).fillna(False)
+    
+    # Exit on trend change
+    trendChange = (df_temp['trend'] != df_temp['trend'].shift(1))
+    
+    #Or statment to exit
+    exits = trendChange | time_exit
+    
 
+\end{lstlisting}
 
-# Exit after 120 minutes
-time_exit = exitSlots.shift(120).fillna(False)
-
-# Exit on trend change
-trendChange = (df_temp['trend'] != df_temp['trend'].shift(1))
-
-#Or statment to exit
-exits = trendChange | time_exit
-\end{verbatim}
 
 
 
@@ -524,10 +562,10 @@ I have to give more context about the entry conditions. $df\_temp$ is just a var
 \subsubsection*{Outlier context}
 
 
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
     df_temp['outlier_context'] == 'b'
     df_temp['trend'] == 'Uptrend'
-\end{verbatim}
+\end{lstlisting}
 
 As shown in Figure \ref{fig:outlier_context}, the dataframe contains various metrics that we use for our trading decisions:
 
