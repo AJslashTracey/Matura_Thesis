@@ -136,7 +136,7 @@ Automating a trading strategy comes with many different challenges which are not
 
 
 
-\subsection*{What is trading?}
+\subsection{What is trading?}
 Trading means buying and selling financial assets like stocks, cryptocurrencies, or commodities, usually with the goal of making a profit. Traders try to buy at a low price and sell at a higher one, or profit from falling prices by selling high and buying back lower. Prices in financial markets change constantly, which creates opportunities — but also risks. There are many different types of trading, depending on the chosen timeframe, strategy, and how trades are managed. Losing is part of every strategy the goal is to lose less money than you win.
 As trading is often seen as an easy way to make money it is important to understand that it is not easy. It is a skill that requires a lot of time and effort to master. Type of trading strategy does not matter there is no easy or fast way to success in trading. 
 
@@ -182,7 +182,7 @@ It is possible to make a profit in the markets but it is not easy, not for every
 
 
 \newpage
-\subsection*{Bitcoin}
+\subsection{What is Bitcoin?}
 
 As my algorithm is trades the Bitcoin/USD pair, I want to explain what Bitcoin is.
 
@@ -244,7 +244,7 @@ These features make Bitcoin an interesting asset, both from a technological and 
 
 
 
-\subsection*{Development of a Systematic Strategy}
+\subsection{Development of a Systematic Strategy}
 
 
 A systematic strategy is a trading strategy which uses fixed entry and exit conditions. Entry conditions in systematic trading strategies can vary from entries based on news, technical indicators, or other external factors. In contrast to discretionary trading where the trader decides whether to enter or exit a trade based on human emotion or intuition.
@@ -278,13 +278,13 @@ Throughout this process, the focus remains on consistency and measurable results
 \newpage
 \section{Methodology}
 
-\subsection*{Project Overview}
+\subsection{Project Overview}
 The aim of this project was to design, test, and deploy a fully automated trading strategy for Bitcoin.
 My development process consisted of four main stages. First, historical price data was collected to backtest strategies on.
 In the second stage I try to develop an edge by analyzing the data I collected and define a signal from it.
 In the third step, the entry and exit conditions are backtested on several months of historical data using a custom Python-written framework. Finally, if the results met predefined criteria (e.g. acceptable drawdown and stable returns), the strategy was deployed live on a PaaS that connects to the exchanges where the trades are executed in real time.
 
-\subsection*{Data collection}
+\subsection{Data collection}
 
 % write about how this has to do with the EMH and why this offer new found edge 
 
@@ -301,10 +301,10 @@ In my dataset, I calculate the 1\%, 2.5\%, and 5\% delta of the order book. Addi
 
 
 \newpage
-The order book delta is calculated by summing the total value of bid orders $n\%$ below the current price ($P_t$) and subtracting the total value of ask orders that are $n\%$ above the current price ($P_t$).
-\begin{equation*}
+\begin{equation}
     \Delta_{OB} = \sum_{i=1}^{n} V_{bid_i} - \sum_{i=1}^{n} V_{ask_i}
-\end{equation*}
+    \label{eq:orderbook_delta}
+\end{equation}
 
 I got the formular from: \href{https://academy.hyblockcapital.com/indicators/orderbook/bids-and-asks-delta?utm_source=chatgpt.com}{Hypeblock capital}
 
@@ -316,7 +316,7 @@ I got the formular from: \href{https://academy.hyblockcapital.com/indicators/ord
 
 
 \newpage
-\subsection*{Framework}
+\subsection{Framework}
 Now before diving into the development of a systematic trading strategy I want to explain what kind of services we need and how we can use them to our advantage.
 
 \subsubsection*{Broker}
@@ -325,7 +325,8 @@ In order to buy and sell Bitcoin we need an exchange to trade on and the exchang
 \subsubsection*{Hosting services}
 Running the algorithm on my personal computer is not an option as it would require me to have my computer running 24/7. This is not feasible and would also require me to have a stable internet connection. For this reason I need a hosting service that can run my algorithm 24/7. I chose Railway since it is very simple to use and I already know how to host my code there as I have been using it for a long time for other projects. Railway is a PaaS (Platform as a Service) which allows me to host my code on a server and run it remotely.
 
-
+\subsubsection*{Backtesting Python libary}
+A python library is a collection of tools and libraries that allow developers to interact with a specific API. For backtesting I chose Vectorbt as it offers a comprehensive set of tools for backtesting and has a very comprehensive documentation with a lot of examples \href{https://github.com/polakowo/vectorbt}{Vectorbt Documentation}.
 
 
 
@@ -335,7 +336,7 @@ Running the algorithm on my personal computer is not an option as it would requi
 
 
 \newpage
-\subsection*{Defining goals}
+\subsection{Defining goals}
 
 
 The most difficult part of developing a trading algorithm is finding a strategy that is actually worth integrating. As explained in the Efficient Markets section, it is in principle possible to find a strategy that generates profit. The problem is that finding a strategy which consistently makes money and outperforms the market is still extremely difficult.
@@ -344,7 +345,7 @@ Before I start searching, I need to define what I am searching for. To do this, 
 
 \subsubsection*{Goals}
 \begin{itemize}
-    \item Two months allocated for finding a strategy
+    \item Two months time to find a strategy
     \item Strategy operates on the Bitcoin/USD pair using \href{https://hyperfoundation.org/}{Hyperliquid}
     \item Target Sharpe ratio between 1 and 2 \footnote{The Sharpe ratio is a measure of risk-adjusted return. It compares the average return of a strategy to its volatility. A higher Sharpe ratio indicates a better balance between risk and return. A Sharpe ratio between 1 and 2 is considered decent in most financial contexts.}
     \item Approximately 20 trades per month
@@ -354,7 +355,6 @@ Before I start searching, I need to define what I am searching for. To do this, 
 
 
 %Starting of with searching for a potential strategy I already had a few ideas coming from discretionary trading approaches where I saw a potential to implement as a systemmatic set of rules. Just by reading tweets, watching crypto charts, and by playing with platforms offering various kinds of indicators. %One of the most significant advantages of crypto markets is the accessibility and granularity of trading data. Most major exchanges offer free public APIs that provide real-time and historical price data, often down to the minute or even second. This includes not only price and volume, but also open interest, funding rates, and even aggregated order book data in some cases. In contrast, similar datasets for traditional assets (e.g., stocks or futures) are often locked behind expensive data vendors or limited in granularity. The open nature of crypto data allows independent developers and researchers to prototype, test, and iterate much more rapidly — making it an ideal environment for building and evaluating automated strategies.
-The area where I saw the most potential was the order book delta. My hypothesis was that, since it directly reflects the relationship between buyers and sellers at specific price levels, it could serve as the basis for a statistical signal. By running volatility and directional bias tests under various order book delta conditions, I aimed to identify patterns that might be predictive of short-term price movements.
 
 
 % Smart strategy explination  why a goal is neede
@@ -373,13 +373,13 @@ The area where I saw the most potential was the order book delta. My hypothesis 
 
 
 \newpage
-\subsection*{Not stattionary data}
+\subsection{Not stattionary data}
 Trend identification process.
 
 
 \newpage
 
-\subsection*{Strategy Search Methodology}
+\subsection{Strategy Search Methodology}
 
 My strategy search process consists out of two parts. First I search for a potential edge in the entry condition. Then I backtest the strategy with the entry condition that has the best performance in my randomized testing.
 
@@ -423,17 +423,25 @@ First test is done on 40'000 minutes of data if the strategy is profitable I run
 
 
 
-\textbf{Results:}
+
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{imgs/showcase_market_simulation.png}
     \label{fig:bullish_outliers_comparison}
+    \caption{Backtest average return comparison}
 \end{figure}
 
-On the $X$ axis you can see the sample size and on the $Y$ axis you can see the average return over he different test runs.
+This is a visualization of the backtest results. The x-axis shows the sample size and the y-axis shows the average return over the different test runs.
+A value is colored green if the average return is positive and red if it is negative. The stronger the color the higher or lower the average return is.
 
 
+Right here I just wanted to see what the average return of a $P_t$ is which is inside of an uptrend.
+
+\begin{lstlisting}[language=Python]
+    # Entry conditions
+    entries = df['trend'] == 'Uptrend'
+\end{lstlisting}
 
 
 
@@ -446,7 +454,7 @@ On the $X$ axis you can see the sample size and on the $Y$ axis you can see the 
 
 
 \newpage
-\subsection*{Strategy example}
+\subsection{Strategy example}
 For showcasing purposes I will run a backtest on a strategy which is based on two different moving averages. We buy once the short moving average crosses the long moving average from below and sell once the short moving average crosses the long moving average from above.
 
 
@@ -468,8 +476,11 @@ exits = fast_ma.ma_crossed_below(slow_ma)
 
 \newpage
 
-\subsection*{Searching a strategy}
-Now creating my own orderbook delta time series has a reason as I think: that the order book delta directly reflects the relationship between buyers and sellers at specific price levels. I will run multiple tests as hoping to find a realtionship between the order book delta and the price action.
+\subsection{Final strategy}
+The area where I saw the most potential was the order book delta (see Equation \ref{eq:orderbook_delta}). My hypothesis was that, since it directly reflects the relationship between buyers and sellers at specific price levels, it could serve as the basis for a statistical signal. By running volatility and directional bias tests under various order book delta conditions, I aimed to identify patterns that might be predictive of short-term price movements.
+
+
+
 
 \begin{figure}[h]
     \centering
