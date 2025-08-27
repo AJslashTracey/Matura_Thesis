@@ -159,28 +159,6 @@ My strategy is best descirbed as a statistical signal-based strategy. As I try t
 
 
 
-\newpage
-\subsection{Efficient markets}
-Making consistent profits in financial markets is difficult. Prices move in ways that often seem unpredictable, and most traders both discretionary and systematic struggle to gain a lasting edge. \footnote[1]{An edge is a consistent advantage over the market. It can be achieved through superior information, better analysis, or a unique trading approach.}One explination for this is the Efficient market hypothesis (EMH) which suggest that asset prices already reflect all available information, leaving little room for profitable oppertunities.
-
-
-
-
-
-
-If the EMH were fully accurate in practice, then even the most advanced trading algorithms and best discretionary traders would not be able to consistently beat the market. \footnote[2]{Beating the market means achieving a higher ROI ("Return on Investment") than a certain benchmark. A common benchmark is the S\&P 500, which is an index including the 500 largest companies listed on U.S. stock exchanges. The S\&P 500 has had an average yearly return of about 10.33\% since 1957} Yet markets are not perfectly efficient, being heavily influenced by emotion, fear, and herd behaviour. Traders often fail to act on clear signals simply because it is psychologically hard to buy on a red day or sell while everybody is full of euphoria.
-
-
-To make things even better depending on where you trade market can change in efficient. But still some of the most valuable assets like stocks, gold and Bitcoin prices are a reflection of human emotion pricing in information. Especially now with Trump in office a lot of volatility came in with big opportunities
-
-Depending on the timeframe there are still a lot inefficiencies from which individuals can make a profit from. I will try to act on short term inefficiencies with my trading algorithm because I only have about one month for the live test and it would not make sense to run an algorithm which holds a trade over weeks and takes a trade every two months. In addition my initial idea when I started of with my matura thesis was already based on short term signals.
-
-It is possible to make a profit in the markets but it is not easy, not for everyone, and needs dedication. I am pretty sure I am able to make a profit. The question rather is if it is possible to do so in the limited time I have and at what scale.
-
-
-
-
-
 
 
 
@@ -224,34 +202,36 @@ You can start trading crypto with as little as 10 USD no matter if the exchanges
 
 
 
-
-
-
-
-
-
-
-
-
-
 These features make Bitcoin an interesting asset, both from a technological and financial perspective.
 
 
 
 
-
-
-
-
 \newpage
+\subsection{Efficient markets}
+Making consistent profits in financial markets is difficult. Prices move in ways that often seem unpredictable, and most traders both discretionary and systematic struggle to gain a lasting edge. \footnote[1]{An edge is a consistent advantage over the market. It can be achieved through superior information, better analysis, or a unique trading approach.}One explination for this is the Efficient market hypothesis (EMH) which suggest that asset prices already reflect all available information, leaving little room for profitable oppertunities.
 
 
 
 
-\subsection{Development of a Systematic Strategy}
+
+
+If the EMH were fully accurate in practice, then even the most advanced trading algorithms and best discretionary traders would not be able to consistently beat the market. \footnote[2]{Beating the market means achieving a higher ROI ("Return on Investment") than a certain benchmark. A common benchmark is the S\&P 500, which is an index including the 500 largest companies listed on U.S. stock exchanges. The S\&P 500 has had an average yearly return of about 10.33\% since 1957} Yet markets are not perfectly efficient, being heavily influenced by emotion, fear, and herd behaviour. Traders often fail to act on clear signals simply because it is psychologically hard to buy on a red day or sell while everybody is full of euphoria.
+
+
+To make things even better depending on where you trade market can change in efficient. But still some of the most valuable assets like stocks, gold and Bitcoin prices are a reflection of human emotion pricing in information. Especially now with Trump in office a lot of volatility came in with big opportunities
+
+Depending on the timeframe there are still a lot inefficiencies from which individuals can make a profit from. I will try to act on short term inefficiencies with my trading algorithm because I only have about one month for the live test and it would not make sense to run an algorithm which holds a trade over weeks and takes a trade every two months. In addition my initial idea when I started of with my matura thesis was already based on short term signals.
+
+It is possible to make a profit in the markets but it is not easy, not for everyone, and needs dedication. I am pretty sure I am able to make a profit. The question rather is if it is possible to do so in the limited time I have and at what scale.
+
+
+
+
+
 
 \subsubsection*{Understanding Market Edge}
-Before diving into strategy development, it's important to understand the concept of a market edge. An edge is a consistent advantage over the market that allows a trader to make profitable trades over time. Edge can have many different orgins some example are:
+Before diving into strategy development, it's important to understand the concept of a market edge. An edge is a consistent advantage over the market that allows a trader to capitalize on market inefficiencies. Edge can have many different orgins some example are:
 \begin{itemize}
     \item Superior information or analysis
     \item Faster execution or better technology
@@ -260,16 +240,25 @@ Before diving into strategy development, it's important to understand the concep
 \end{itemize}
 Without a clear edge, even the most sophisticated trading system will struggle to generate consistent profits. The goal of systematic strategy development is to identify, validate, and exploit such edges in a repeatable way.
 
+
+
+
+
+
+
+
+\subsection{Development of a Systematic Strategy}
+
 \textbf{Idea Generation:}
-The systematic strategy has to be based on a hypothesis that once signal X occurs the market is wrong and we can profit from the market correcting back to a fair value. Finding an idea to test on if there is an edge to it is the first step. This can be done by copying other strategies and applying them in a different way or in a different market. The approach I took was trying to make a discretionary strategy into a systematic one.
+The systematic strategy has to be based on a hypothesis that once signal X occurs the market is wrong and we can profit from the market correcting back to a fair value. This can be done by copying other strategies and applying them in a different way or in a different market. The approach I took was trying to make a discretionary strategy into a systematic one.
 
 
 
 \textbf{Backtesting:}
-After coming up with an idea we have to make a stric entry and exit conditions. We test the rules on historical data. This allows the developer to evaluate how the strategy would have performed in the past. This allows us to get a hint on how the strategy would perform in the future and if it is worth automating. 
+After coming up with an idea we have to make a strict set of entry and exit conditions. We test the rules on historical data. This allows the developer to evaluate how the strategy would have performed in the past. This allows us to get a hint on how the strategy would perform in the future and if it is worth automating. 
 
 \textbf{Optimization and Robustness Testing:}
-After initial tests, parameters can be adjusted. A simple example would be adjusting the holding time of a trade. If a strategy ends up to not be profitable with a trade holding time of 15 minutes this doesn't mean the strategy is not profitable. It just means that the strategy is not profitable with a trade holding time of 15 minutes. Some inefficiencies can be corrected in minutes others might take a day or two. Holding time is a simple example which doesn't bring a lot of risk with it if we test on different holding times. As long as we use a limited amount and have clear differences between the different holding times we can be sure that the strategy is robust. The biggest risk we face with backtesting is that we might overfit the strategy to the past data. An overfitted strategy looks great on historical data but will fail in the live market.
+After initial tests, parameters can be adjusted. A simple example would be adjusting the holding time of a trade.  Some inefficiencies can be corrected in minutes others might take a day or two it is up to us to find the right balance. Holding time is a simple example which doesn't bring a lot of risk with it if we test on different holding times. As long as we use a limited amount and have clear differences between the different holding times we can be sure that the strategy is robust. The biggest risk we face with backtesting is that we might overfit the strategy to the past data. An overfitted strategy looks great on historical data but will fail in the live market.
 
 \textbf{Live Execution:}
 If the backtesting results are promising and the strategy appears robust, it can be deployed live. Execution is handled by a bot or script running on a server, which listens to market data and acts as soon as the conditions are met. New things have to be taken in consideration here whicha are not a problem in backtests. One such thing is the time it takes to calculate the entry and exit conditions. This is a problem, as the price might change between when the actual entry conditions occur and when the entry signal is calculated.
@@ -409,7 +398,6 @@ This methodology acts as a powerful filter. Only if we see good average returns,
 
 This approach is particularly powerful because it separates the question of whether an edge exists from the question of how to best exploit that edge. Only after establishing statistical evidence of an edge through this randomized testing do we move forward with detailed backtesting and optimization of a specific implementation.
 
-The custom Python framework which tests different holding periods and sampling percentages is available on my github page \href{https://github.com/AJslashTracey/signal_search_strategy}{Signal Search framework}. I used the Vectorbt to implement fees and slippage and toke some logic out of a Repository I found inside of the Vectorbt github documentation which appliesthe same logic to test different strategies by randomly changing entry conditions \href{https://github.com/polakowo/vectorbt}{Vectorbt Documentation}.
 
 
 \subsubsection*{Walk-forward testing}
