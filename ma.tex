@@ -558,7 +558,7 @@ How ever in the crypto industry the is no universally accepted risk free rate.
     \item accumulate $=$ True \footnote{This allows us to open multiple trades at the same timei}
 \end{itemize}
 
-
+\newpage
 \subsubsection*{Code entry conditions}
 
 \begin{lstlisting}[language=Python]
@@ -584,7 +584,7 @@ How ever in the crypto industry the is no universally accepted risk free rate.
 
 \newpage
 \subsubsection*{Entry conditions calculations}
-I have to give more context about the entry conditions. $df\_temp$ is just a variable to which I assign a timeseries dataframe \footnote{A dataframe is a two dimensional array with rows and columns} with different kind of metrics inside of it. The entry conditions are defined by two boolean conditions:
+I have to give more context about the entry conditions. \textbf{df\_temp} is just a variable to which I assign a timeseries dataframe \footnote{A dataframe is a two dimensional array with rows and columns} with different kind of metrics inside of it. The entry conditions are defined by two boolean conditions:
 
 
 \subsubsection*{Outlier context}
@@ -635,8 +635,8 @@ We compare current prices with previous highs and lows using a window of time ($
 We also look at support and resistance levels to strengthen our trend analysis:
 
 \begin{itemize}
-    \item Support: Price levels where buying pressure tends to stop price from falling further
-    \item Resistance: Price levels where selling pressure tends to stop price from rising further
+    \item Resistance: Price levels where buying pressure tends to stop price from falling further
+    \item Support: Price levels where selling pressure tends to stop price from rising further
 \end{itemize}
 
 The slopes of these levels help us determine trend strength. For example, rising support and resistance levels indicate a strong uptrend, while falling levels suggest a downtrend.
