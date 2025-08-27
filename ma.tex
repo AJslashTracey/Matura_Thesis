@@ -160,7 +160,7 @@ My strategy is best descirbed as a statistical signal-based strategy. As I try t
 
 
 \newpage
-\subsection*{Efficient markets}
+\subsection{Efficient markets}
 Making consistent profits in financial markets is difficult. Prices move in ways that often seem unpredictable, and most traders both discretionary and systematic struggle to gain a lasting edge. \footnote[1]{An edge is a consistent advantage over the market. It can be achieved through superior information, better analysis, or a unique trading approach.}One explination for this is the Efficient market hypothesis (EMH) which suggest that asset prices already reflect all available information, leaving little room for profitable oppertunities.
 
 
@@ -173,9 +173,13 @@ If the EMH were fully accurate in practice, then even the most advanced trading 
 
 To make things even better depending on where you trade market can change in efficient. But still some of the most valuable assets like stocks, gold and Bitcoin prices are a reflection of human emotion pricing in information. Especially now with Trump in office a lot of volatility came in with big opportunities
 
-Depending on the timeframe there are still a lot inefficiencies from which individuals can make a profit from. I will try to act on short term inefficiencies with my trading algorithm because I only have about one month for the live test and it would not make sense to run an algorithm which holds a trade over weeks and takes a trade every two months. In addition my initial idea when I started of with my matura thesis was already based on short term signals.§
+Depending on the timeframe there are still a lot inefficiencies from which individuals can make a profit from. I will try to act on short term inefficiencies with my trading algorithm because I only have about one month for the live test and it would not make sense to run an algorithm which holds a trade over weeks and takes a trade every two months. In addition my initial idea when I started of with my matura thesis was already based on short term signals.
 
 It is possible to make a profit in the markets but it is not easy, not for everyone, and needs dedication. I am pretty sure I am able to make a profit. The question rather is if it is possible to do so in the limited time I have and at what scale.
+
+
+
+
 
 
 
@@ -381,7 +385,7 @@ Trend identification process.
 
 \subsection{Strategy Search Methodology}
 
-My strategy search process consists out of two parts. First I search for a potential edge in the entry condition. Then I backtest the strategy with the entry condition that has the best performance in my randomized testing.
+I evaluate a strategy with two different processes. First I search for a potential edge in the entry condition. Then I backtest the strategy with the entry condition that has the best performance in my randomized testing.
 
 
 \subsubsection*{Initial Edge Discovery}
@@ -389,17 +393,17 @@ Instead of immediately running a complete backtest on a single strategy implemen
 
 For example, if the base entry condition identifies 1000 potential trade entries over the historical data, each strategy variation will randomly sample different subsets of these entries (e.g., taking 20\%, 80\%, or 100\% of all signal s). This creates 1000 unique strategies that all use the same entry condition but trade different specific instances of it.
 
-The key insight of this approach is that if the entry condition contains no edge, the performance across the different holding periods and sample sizes should have a negative return. Now the question might come up why not revers a signal? For a reversed signal to be profitable, the absolute value of the average return per trade has to exceed the transaction cost (fees and slippage). 
+The key insight of this approach is that if the entry condition contains no edge, the performance across the different holding periods and sample sizes should have a negative return. Now the question might come up why not revers a signal? For a reversed signal to be profitable, the absolute value of the average return per trade has to exceed the transaction cost including fees and slippage most of the time this is not the case.
 
 However, if there is a genuine edge in the entry condition, we should see consistent performance characteristics across the variations, even though each strategy trades different specific signals.
 
 \subsubsection*{Parameter Space Exploration}
 To further validate any potential edge, each of the 1000 variations is tested across different holding periods (periods between open and close of trade). This adds another dimension to the analysis, not only are we testing if the entry condition has merit \footnote[1]{How much the test improves decision-making for a user compared to decisions made before the test.}, but also how long positions should be held to best capture any edge.
 
-The process runs these tests in batches of 100 strategies at a time to manage computational resources efficiently (since my PC only has 32 gb of ram). For each combination of sampling percentage and holding period, the system calculates key metrics averaged across all strategy variations. This provides robust statistical evidence of whether the entry condition has merit, as we're looking at aggregate performance across thousands of different implementations rather than a single backtest that might be influenced by luck.
+The process runs these tests in batches of 100 strategies at a time to manage computational resources efficiently. For each combination of sampling percentage and holding period, the system calculates key metrics averaged across all strategy variations. This provides robust statistical evidence of whether the entry condition has merit, as we're looking at aggregate performance across thousands of different implementations rather than a single backtest that might be influenced by luck.
 
 \subsubsection*{Statistical Validation Before Detailed Backtesting}
-This methodology acts as a powerful filter, only if we see consistent positive characteristics across the 1000 variations do we proceed to detailed backtesting. This prevents wasting time on detailed optimization of strategies that have no fundamental edge. It's a way of asking "does this entry condition have any merit?" before asking "how can we best implement this entry condition?"
+This methodology acts as a powerful filter. Only if we see good average returns, we proceed to detailed backtesting. This prevents wasting time on running every parameter combination separately and we can directly compare outcome of the different parameter combinations. It's a way of asking "Does this entry condition have any merit?" before asking "How can we best implement this entry condition?"
 
 This approach is particularly powerful because it separates the question of whether an edge exists from the question of how to best exploit that edge. Only after establishing statistical evidence of an edge through this randomized testing do we move forward with detailed backtesting and optimization of a specific implementation.
 
