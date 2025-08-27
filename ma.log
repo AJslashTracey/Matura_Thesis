@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  27 AUG 2025 14:51
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  27 AUG 2025 15:12
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -669,37 +669,37 @@ File: imgs/bitcoin_price_over_years.png Graphic file (type bmp)
 [11]
 
 [12]
-
-[13]
 File: imgs/showcase_market_simulation.png Graphic file (type bmp)
 <imgs/showcase_market_simulation.png>
  (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 
-[14]
+[13]
 File: imgs/strat_show_case_btc.png Graphic file (type bmp)
 <imgs/strat_show_case_btc.png>
 
 
-[15]
+[14]
 File: imgs/showcase_chart.png Graphic file (type bmp)
 <imgs/showcase_chart.png>
 
 
-[16]
-
-[17]
-Overfull \hbox (12.76065pt too wide) in paragraph at lines 566--569
+[15]
+Overfull \hbox (12.76065pt too wide) in paragraph at lines 564--567
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
 
-[18]
+[16]
+
+[17]
 File: imgs/dataframeHead.png Graphic file (type bmp)
 <imgs/dataframeHead.png>
 
+
+[18]
 
 [19]
 
@@ -707,23 +707,21 @@ File: imgs/dataframeHead.png Graphic file (type bmp)
 
 [21]
 
-[22]
-
-[23] (./ma.aux)
+[22] (./ma.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `ma.out' has not changed.
-(rerunfilecheck)             Checksum: F677C14B9D8D993A349E18C141E9AF9C;2438.
+(rerunfilecheck)             Checksum: AC699DB10624C2D05E23B426355D685A;2274.
  ) 
 Here is how much of TeX's memory you used:
  21482 strings out of 473832
  432867 string characters out of 5729482
- 1095312 words of memory out of 5000000
+ 1093312 words of memory out of 5000000
  44283 multiletter control sequences out of 15000+600000
  567310 words of font info for 97 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 83i,9n,131p,2444b,1140s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,9n,131p,2444b,1739s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ma.pdf (27 pages).
+Output written on ma.pdf (26 pages).
