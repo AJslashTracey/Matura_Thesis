@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  27 AUG 2025 15:12
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  27 AUG 2025 15:31
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -686,7 +686,7 @@ File: imgs/showcase_chart.png Graphic file (type bmp)
 
 
 [15]
-Overfull \hbox (12.76065pt too wide) in paragraph at lines 564--567
+Overfull \hbox (12.76065pt too wide) in paragraph at lines 566--569
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -718,7 +718,7 @@ Package rerunfilecheck Info: File `ma.out' has not changed.
 Here is how much of TeX's memory you used:
  21482 strings out of 473832
  432867 string characters out of 5729482
- 1093312 words of memory out of 5000000
+ 1087312 words of memory out of 5000000
  44283 multiletter control sequences out of 15000+600000
  567310 words of font info for 97 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

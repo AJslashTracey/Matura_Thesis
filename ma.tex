@@ -526,18 +526,20 @@ A high orderbook delta value indicates substantial buy orders below the current 
 
 
 \subsubsection*{Sharp ratio}
-To compare different strategies we should not ourselvs to only compare the total return a strategy achieves. Comparing total returns limits invidual trade performance and else
+To compare different strategies we should not ourselvs to only compare the total return a strategy achieves. Especially when we are not trying to outperform the market. Investing is associated with risk a good comparison between different strategies is to compare how much return we get for the risk we take.
+The sharpe ratio does exactly this. It is a measure of the return per unit of risk. I used this as the main metric to compare strategies. Following formular is used to calulate the sharpe ratio:
 
-The sharp ratio will be used as the main strategy evaluation metric between different backtesting periods and different strategy.
-It describes how much return we get for the risk we take. This can be calculated by dividing the average return over a period $t$ by the standard deviation of the return over the same period.
 
 \begin{equation}
     \text{Sharpe ratio} = \frac{\text{Average return $t$}}{\text{Standard deviation $t$} \footnote{$t$ is the time span over which we calculate the average return and the standard deviation} }\cdot \sqrt{98280} \footnote{98280 is used to annualize the Sharpe ratio we do this in order to compare the Sharpe ratio with the Sharpe ratio of other strategies or funds}
 \end{equation}
 
+There are different variations of the sharpe ratio. The orginal version as defined by WIlliam Sharpe, uses the return of a strategy compared to a risk free rate, divided by the standard deviation of the return.
+How ever in the crypto industry the is no universally accepted risk free rate. 
 
-
-
+\begin{equation}
+    \text{Sharpe ratio} = \frac{\text{Average return $t$ - Risk free rate}}{\text{Standard deviation $t$}  }
+\end{equation}
 
 \subsubsection*{Backtesting results}
 
