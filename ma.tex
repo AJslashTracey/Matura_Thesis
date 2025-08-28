@@ -169,7 +169,7 @@ My strategy is best descirbed as a statistical signal-based strategy. As I try t
 As my algorithm is trades the Bitcoin/USD pair, I want to explain what Bitcoin is.
 
 Before explaining what Bitcoin is, it is important to first understand the fundamental problems of fiat money. 
-The central issue lies in the centralization: governments and central banks hold complete control over the money supply. This control enables them to print money at will, there by increasing the supply and often causing inflation. As a result, the purchasing power of money decreases, which devalues people’s savings. In addition, monetary policy \footnote[1]{actions undertaken by a nation's central bank to manage the money supply and credit conditions to achieve macroeconomic goals} 
+The central issue lies in the centralization: governments and central banks hold complete control over the money supply. This control enables them to print money at will, there by increasing the supply and often causing inflation. As a result, the purchasing power of money decreases, which devalues people’s savings. In addition, monetary policy \footnote{actions undertaken by a nation's central bank to manage the money supply and credit conditions to achieve macroeconomic goals} 
 decisions are frequently influenced by political considerations rather than sound economic principles, leading to poor economic outcomes. Ultimately, the system depends entirely on trust in governments to manage the money supply responsibly.
 
 
@@ -209,14 +209,14 @@ These features make Bitcoin an interesting asset, both from a technological and 
 
 \newpage
 \subsection{Efficient markets}
-Making consistent profits in financial markets is difficult. Prices move in ways that often seem unpredictable, and most traders both discretionary and systematic struggle to gain a lasting edge. \footnote[1]{An edge is a consistent advantage over the market. It can be achieved through superior information, better analysis, or a unique trading approach.}One explination for this is the Efficient market hypothesis (EMH) which suggest that asset prices already reflect all available information, leaving little room for profitable oppertunities.
+Making consistent profits in financial markets is difficult. Prices move in ways that often seem unpredictable, and most traders both discretionary and systematic struggle to gain a lasting edge. \footnote{An edge is a consistent advantage over the market. It can be achieved through superior information, better analysis, or a unique trading approach.}One explination for this is the Efficient market hypothesis (EMH) which suggest that asset prices already reflect all available information, leaving little room for profitable oppertunities.
 
 
 
 
 
 
-If the EMH were fully accurate in practice, then even the most advanced trading algorithms and best discretionary traders would not be able to consistently beat the market. \footnote[2]{Beating the market means achieving a higher ROI ("Return on Investment") than a certain benchmark. A common benchmark is the S\&P 500, which is an index including the 500 largest companies listed on U.S. stock exchanges. The S\&P 500 has had an average yearly return of about 10.33\% since 1957} Yet markets are not perfectly efficient, being heavily influenced by emotion, fear, and herd behaviour. Traders often fail to act on clear signals simply because it is psychologically hard to buy on a red day or sell while everybody is full of euphoria.
+If the EMH were fully accurate in practice, then even the most advanced trading algorithms and best discretionary traders would not be able to consistently beat the market. \footnote{Beating the market means achieving a higher ROI ("Return on Investment") than a certain benchmark. A common benchmark is the S\&P 500, which is an index including the 500 largest companies listed on U.S. stock exchanges. The S\&P 500 has had an average yearly return of about 10.33\% since 1957} Yet markets are not perfectly efficient, being heavily influenced by emotion, fear, and herd behaviour. Traders often fail to act on clear signals simply because it is psychologically hard to buy on a red day or sell while everybody is full of euphoria.
 
 
 To make things even better depending on where you trade market can change in efficient. But still some of the most valuable assets like stocks, gold and Bitcoin prices are a reflection of human emotion pricing in information. Especially now with Trump in office a lot of volatility came in with big opportunities
@@ -294,7 +294,7 @@ This increases the chance of discovering something new that might be missed when
 
 There are platforms that offer orderbook delta data for free, but only for discretionary trading (i.e. they only display the data in a chart and do not provide it as a downloadable time series). My idea was to create a Python script which hits the API in one-minute intervals and stores the data inside a Postgres database. I have been hosting the data mining script on my PaaS since March 11, 2025 \href{https://customchart-production.up.railway.app/#}{Live database connection}.
 
-The creation of the time series was done through a public exchange API\footnote[1]{API stands for Application Programming Interface. It is a tool that allows programs to request and receive specific data from external services—in this case, used to fetch real-time Bitcoin price and orderbook data from the Coinbase crypto exchange.}, with data fetched in one-minute intervals and stored inside a database on a PaaS\footnote[2]{PaaS stands for Platform as a Service. It is a cloud computing model which gives developers a platform to host their applications so that they are globally accessible on the internet and run 24/7}.
+The creation of the time series was done through a public exchange API\footnote{API stands for Application Programming Interface. It is a tool that allows programs to request and receive specific data from external services—in this case, used to fetch real-time Bitcoin price and orderbook data from the Coinbase crypto exchange.}, with data fetched in one-minute intervals and stored inside a database on a PaaS\footnote{PaaS stands for Platform as a Service. It is a cloud computing model which gives developers a platform to host their applications so that they are globally accessible on the internet and run 24/7}.
 
 
 In my dataset, I calculate the 1\%, 2.5\%, and 5\% delta of the orderbook. Additionally, I include the current Bitcoin price and the corresponding timestamp. The program I wrote collects data by sending API requests to the Coinbase Exchange API at one minute intervals. It retrieves both the current Bitcoin price and a full snapshot of the orderbook at that moment. A complete snapshot is necessary to calculate orderbook deltas at different percentage depths accurately.
@@ -373,7 +373,7 @@ Before I start searching, I need to define what I am searching for. To do this, 
 
 
 \newpage
-\section{Robustness Check via Resampled Strategy Variants}
+\subsection{Robustness Check via Resampled Strategy Variants}
 
 Instead of running a single backtest of one strategy, we generate $M$ variations of the same base entry condition. Each variation trades a different random subset of the original trade signals and use different holding periods. It is important to note that we could use a different parameter than the holding periods but for my strategy it made moste sense. Changing other parameters would have introcuced the risk of overfitting our strategy to our historical data.
 
