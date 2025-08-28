@@ -269,7 +269,7 @@ After coming up with an idea we have to make a strict set of entry and exit cond
 After initial tests, parameters can be adjusted. A simple example would be adjusting the holding time of a trade.  Some inefficiencies can be corrected in minutes others might take a day or two it is up to us to find the right balance. Holding time is a simple example which doesn't bring a lot of risk with it if we test on different holding times. As long as we use a limited amount and have clear differences between the different holding times we can be sure that the strategy is robust. The biggest risk we face with backtesting is that we might overfit the strategy to the past data. An overfitted strategy looks great on historical data but will fail in the live market.
 
 \textbf{Live Execution:}
-If the backtesting results are promising and the strategy appears robust, it can be deployed live. Execution is handled by a bot or script running on a server, which listens to market data and acts as soon as the conditions are met. New things have to be taken in consideration here whicha are not a problem in backtests. One such thing is the time it takes to calculate the entry and exit conditions. This is a problem, as the price might change between when the actual entry conditions occur and when the entry signal is calculated.
+If the backtesting results are promising and the strategy appears robust, it can be deployed live. Execution is handled by a algorithm running on a server, which listens to market data and acts as soon as the conditions are met. New things have to be taken in consideration here whicha are not a problem in backtests. One such thing is the time it takes to calculate the entry and exit conditions. This is a problem, as the price might change between when the actual entry conditions occur and when the entry signal is calculated.
 
 Throughout this process, the focus remains on consistency and measurable results. Unlike human decision-making, a systematic strategy must behave identically entry and exit conditions. This makes it possible to evaluate, improve and automate trading in a transparent way.
 
@@ -637,10 +637,24 @@ This approach helps us filter out market noise and identify real trading opportu
 \newpage
 \section{Results}
 
-My  
+The first version of my trading algorithm was started on the 20th of July 2025. On average there is one signal per week. So it took me a week to find out that my algorithm was not working correctly. The problem was that the signal calculation was not the same as in my backtest. My backtest codebase became so big that I mixed things up and implemented the wrong logic.
+I was not able to find the problem and kept updating it till I got about similair results as in my backtest. I will later dive deeper into why it is such a compleciated problem to implement the backtest logic into a live trading algorithm.
+On 10th of August I was able to make the algorithm nearly match the entry signals of my backtest. I had to stop trying to make the algorithm work exactly as in my backtest as time was running out. 14h of August first few trades were taken. 
+I initaily started two algorithms but one was such a failure that I was forced to stop it.
 
 
 
+
+
+
+
+
+
+\subsection{Backtest results}
+So there are two different backtest results the I want to show here. The results I got before the trading algorithm was implemented. And the results I got after the trading algorithm was implemented.
+The results I got before the implementation were the signals based on which I decided to chose this particular strategy.
+
+\subsubsection*{Backtest results before implementation}
 
 
 
