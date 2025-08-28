@@ -375,7 +375,7 @@ Before I start searching, I need to define what I am searching for. To do this, 
 \newpage
 \section{Robustness Check via Resampled Strategy Variants}
 
-Instead of running a single backtest of one strategy, we generate $M$ variations of the same base entry condition. Each variation trades a different random subset of the original trade signals and use different holding periods. It is important to note that we could use a different parameter than the holding periods but for my strategy it made moste sense. Changing other parameters would have caused overfitting risks.
+Instead of running a single backtest of one strategy, we generate $M$ variations of the same base entry condition. Each variation trades a different random subset of the original trade signals and use different holding periods. It is important to note that we could use a different parameter than the holding periods but for my strategy it made moste sense. Changing other parameters would have introcuced the risk of overfitting our strategy to our historical data.
 
 Formally, let the base entry condition identify $N$ candidate trades. For each variation $v \in \{1,\dots,M\}$ we sample a fraction $p_v \in (0,1]$ of these $N$ signals (without replacement) and assign a holding period $H_v$. The net performance of each variation is then computed after applying transaction costs $c$ that include both fees and slippage.
 
@@ -410,16 +410,12 @@ First test is done on 40'000 minutes of data if the strategy is profitable I run
     \caption{Backtest average return comparison}
 \end{figure}
 
-This is a visualization of the backtest results. The x-axis shows the sample size and the y-axis shows the average return over the different test runs.
+In the heatmap above you can see the results for a simple strategy backtest on a 40'000 minutes timeseries. Strategy logic does not matter yet. The x-axis shows the sample size and the y-axis shows the average return over the different test runs.
 A value is colored green if the average return is positive and red if it is negative. The stronger the color the higher or lower the average return is.
 
 
-Right here I just wanted to see what the average return of a $P_t$ is which is inside of an uptrend.
-
-\begin{lstlisting}[language=Python]
-    # Entry conditions
-    entries = df['trend'] == 'Uptrend'
-\end{lstlisting}
+I realeased a compensatied version of this Backtesting framework on my github page. It is called \href{https://github.com/AJslashTracey/signal_search_strategy}{signal\_search\_strategy}. 
+The testing and analysis methodology presented here mirrors what I use in my actual trading operations. While my original codebase contains complex trading signals and closely interlinked components, I have developed a simplified version to carrying the same logic and concepts. This implementation maintains all essential components of the system, including signal processing, cost calculations, and performance measurements, while removing private and project-specific elements. I created this streamlined version to ensure others can both verify the methodology and run the system themselves, without getting overwhelmed by technical complexities or encountering private trading information. \footnote{The public repository is optimised for integration with other projects.}
 
 
 
