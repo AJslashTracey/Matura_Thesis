@@ -373,31 +373,15 @@ Before I start searching, I need to define what I am searching for. To do this, 
 
 
 \newpage
+\section{Robustness Check via Resampled Strategy Variants}
 
-\subsection{Strategy Search Methodology}
+Instead of running a single backtest of one strategy, we generate $M$ variations of the same base entry condition. Each variation trades a different random subset of the original trade signals and use different holding periods. It is important to note that we could use a different parameter than the holding periods but for my strategy it made moste sense. Changing other parameters would have caused overfitting risks.
 
-I evaluate a strategy with two different processes. First I search for a potential edge in the entry condition. Then I backtest the strategy with the entry condition that has the best performance in my randomized testing.
+Formally, let the base entry condition identify $N$ candidate trades. For each variation $v \in \{1,\dots,M\}$ we sample a fraction $p_v \in (0,1]$ of these $N$ signals (without replacement) and assign a holding period $H_v$. The net performance of each variation is then computed after applying transaction costs $c$ that include both fees and slippage.
 
+The key insight is that if the entry condition contains no edge, the distribution of net returns across the $M$ variations will concentrate around zero or negative values once costs are applied. In contrast, if a genuine edge is present, the majority of variations will show consistently positive outcomes even though each trades a different subset of signals. We gain a better insight into our strategy signals by comparing the difference in performance between different fraction sizes. I will explain why this is important once I explain my strategy logic.
 
-\subsubsection*{Initial Edge Discovery}
-Instead of immediately running a complete backtest on a single strategy implementation, I wrote a custom python frame work which first tests whether a potential entry condition appears to have good average returns. This is accomplished by running 1000 different variations of the same base strategy. Each variation differs in entry condition by testing different holding periods for a trade.
-
-For example, if the base entry condition identifies 1000 potential trade entries over the historical data, each strategy variation will randomly sample different subsets of these entries (e.g., taking 20\%, 80\%, or 100\% of all signal s). This creates 1000 unique strategies that all use the same entry condition but trade different specific instances of it.
-
-The key insight of this approach is that if the entry condition contains no edge, the performance across the different holding periods and sample sizes should have a negative return. Now the question might come up why not revers a signal? For a reversed signal to be profitable, the absolute value of the average return per trade has to exceed the transaction cost including fees and slippage most of the time this is not the case.
-
-However, if there is a genuine edge in the entry condition, we should see consistent performance characteristics across the variations, even though each strategy trades different specific signals.
-
-\subsubsection*{Parameter Space Exploration}
-To further validate any potential edge, each of the 1000 variations is tested across different holding periods (periods between open and close of trade). This adds another dimension to the analysis, not only are we testing if the entry condition has merit \footnote[1]{How much the test improves decision-making for a user compared to decisions made before the test.}, but also how long positions should be held to best capture any edge.
-
-The process runs these tests in batches of 100 strategies at a time to manage computational resources efficiently. For each combination of sampling percentage and holding period, the system calculates key metrics averaged across all strategy variations. This provides robust statistical evidence of whether the entry condition has merit, as we're looking at aggregate performance across thousands of different implementations rather than a single backtest that might be influenced by luck.
-
-\subsubsection*{Statistical Validation Before Detailed Backtesting}
-This methodology acts as a powerful filter. Only if we see good average returns, we proceed to detailed backtesting. This prevents wasting time on running every parameter combination separately and we can directly compare outcome of the different parameter combinations. It's a way of asking "Does this entry condition have any merit?" before asking "How can we best implement this entry condition?"
-
-This approach is particularly powerful because it separates the question of whether an edge exists from the question of how to best exploit that edge. Only after establishing statistical evidence of an edge through this randomized testing do we move forward with detailed backtesting and optimization of a specific implementation.
-
+One might ask why not simply reverse the signal. Let $\bar{r}$ denote the average gross return per trade of the original signal. A reversed signal would only be profitable if $|\bar{r}| > c$ and $\mathrm{sign}(\bar{r}) < 0$ often enough. In practice this condition rarely holds, since most weak or noisy signals satisfy $|\bar{r}| \leq c$, making reversal unprofitable after costs.
 
 
 \subsubsection*{Walk-forward testing}
