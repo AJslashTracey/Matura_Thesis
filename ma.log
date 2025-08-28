@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  28 AUG 2025 23:37
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  28 AUG 2025 23:53
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -693,6 +693,9 @@ File: imgs/dataframeHead.png Graphic file (type bmp)
 [16]
 
 [17]
+File: imgs/backtest_results_ma.png Graphic file (type bmp)
+<imgs/backtest_results_ma.png>
+
 
 [18]
 
@@ -707,10 +710,10 @@ Package rerunfilecheck Info: File `ma.out' has not changed.
 (rerunfilecheck)             Checksum: A6A3EE301C5D8459FB09A9631C0D419D;2529.
  ) 
 Here is how much of TeX's memory you used:
- 21483 strings out of 473832
- 432878 string characters out of 5729482
- 1123230 words of memory out of 5000000
- 44284 multiletter control sequences out of 15000+600000
+ 21493 strings out of 473832
+ 433217 string characters out of 5729482
+ 1123300 words of memory out of 5000000
+ 44293 multiletter control sequences out of 15000+600000
  567310 words of font info for 97 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  83i,9n,131p,2444b,1172s stack positions out of 10000i,1000n,20000p,200000b,200000s
