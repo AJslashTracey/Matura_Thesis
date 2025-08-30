@@ -352,13 +352,25 @@ The most difficult part of developing a trading algorithm is finding a strategy 
 Before I start searching, I need to define what I am searching for. To do this, I use the S.M.A.R.T. goal framework (Specific, Measurable, Attainable, Relevant, and Time-bound), as described in the book \href{https://www.amazon.com/Building-Winning-Algorithmic-Trading-Systems/dp/1118778987}{\textit{Building Winning Algorithmic Trading Systems}} by Kevin J. Davey.
 
 \subsubsection*{Goals}
-\begin{itemize}
-    \item Two months time to find a strategy
-    \item Strategy operates on the Bitcoin/USD pair using \href{https://hyperfoundation.org/}{Hyperliquid}
-    \item Target Sharpe ratio between 1 and 2 \footnote{The Sharpe ratio is a measure of risk-adjusted return. It compares the average return of a strategy to its volatility. A higher Sharpe ratio indicates a better balance between risk and return. A Sharpe ratio between 1 and 2 is considered decent in most financial contexts.}
-    \item Approximately 20 trades per month
-    \item No strict requirement to outperform the market; focus is on stability and consistency
-\end{itemize}
+
+\begin{table}[h]
+\caption{SMART Goals for Strategy Development}
+\begin{tabular}{p{0.2\textwidth} p{0.35\textwidth} p{0.35\textwidth}}
+\toprule
+Criterion & Goal & Explanation \\
+\midrule
+Specific & Strategy trades Bitcoin/USD pair & Asset is clearly defined \\
+\addlinespace
+Measurable & Target Sharpe ratio between 1--2 \footnote{The Sharpe ratio is a measure of risk-adjusted return. It compares the average return of a strategy to its volatility. A higher Sharpe ratio indicates a better balance between risk and return. A Sharpe ratio between 1 and 2 is considered decent in most financial contexts.} & Performance can be compared objectively \\
+\addlinespace
+Attainable & Approx. 20 trades per month & Fits within time and data constraints \\
+\addlinespace
+Relevant & Focus on stability and consistency, not outperforming the market & Aligns with project objectives \\
+\addlinespace
+Time-bound & Two months to find and test a strategy & Aligns with thesis timeframe \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 
