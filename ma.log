@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  30 AUG 2025 21:22
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.4.3)  30 AUG 2025 21:38
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -697,10 +697,6 @@ File: imgs/backtest_results_ma.png Graphic file (type bmp)
 <imgs/backtest_results_ma.png>
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
 [18]
 
 [19]
@@ -713,7 +709,7 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `ma.out' has not changed.
-(rerunfilecheck)             Checksum: 40919AF6F910FDA54119716E15DF0E4A;3058.
+(rerunfilecheck)             Checksum: 1534FBF9E65D34CB454DB608AC586972;3058.
  ) 
 Here is how much of TeX's memory you used:
  21493 strings out of 473832
