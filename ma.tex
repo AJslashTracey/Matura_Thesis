@@ -100,9 +100,9 @@ I had no idea what I was getting myself into, and if I had known before, I would
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \section{Introduction}
-Making money in the capital markets is a complex activity that requires emotional control and discipline. Most ividuals fail to make money on shorter time frames. Since computers do not suffer from psychological biases, automating the process offers the potential for more consistent decisionmaking. This thesis explores whether I can develop an autonomous trading algorithm that can generate me a consistent profit. 
-This work does not aim to outperform professional trading firms, but rather to demonstrate the challanges of building a fully automated trading algorithm.
-To that end my thesis will cover the entire development cycle of an algorithmic trading strategy. The will include finding a trading strategy, backtesting the trading strategy, applying the strategy to a live market, and evaluating the results.
+Making money in the capital markets is a complex activity that requires emotional control and discipline. Most individuals fail to make money on shorter time frames. Since computers do not suffer from psychological biases, automating the process offers the potential for more consistent decision-making. This thesis explores whether I can develop an autonomous trading algorithm that can generate me a consistent profit. 
+This work does not aim to outperform professional trading firms, but rather to demonstrate the challenges of building a fully automated trading algorithm.
+To that end my thesis will cover the entire development cycle of an algorithmic trading strategy. This will include finding a trading strategy, backtesting the trading strategy, applying the strategy to a live market, and evaluating the results.
 
 
 
@@ -136,7 +136,7 @@ By the end of the project, I aim to deliver the following components:
 \newpage
 
 \section{Theoretical Background}
-Automating a trading strategy comes with many different challenges which are not obvius at first. In this section I will explain the basics needed to understand the trading market, algorithmic trading and challenges of creating a trading algorithm.
+Automating a trading strategy comes with many different challenges which are not obvious at first. In this section I will explain the basics needed to understand the trading market, algorithmic trading and challenges of creating a trading algorithm.
 
 
 
@@ -149,9 +149,9 @@ Trading means buying and selling financial assets like stocks, cryptocurrencies,
 As trading is often seen as an easy way to make money it is important to understand that it is not easy. It is a skill that requires a lot of time and effort to master. Type of trading strategy does not matter there is no easy or fast way to success in trading. 
 
 \subsubsection*{Algorithmic Trading}
-In this thesis I will try to find success in the algorithmic trading niche, also know as Algo-trading or automated trading. This is a type of trading which uses computer programs to execute trades in finacial markets based on predefined rules or mathematical models.  Inside of algorithmic trading there are again many different types. Some examples are: statistical arbitrage, trend following, and High-Frequency Trading. In terms of logic all these are not related at all and strategies are often very complex in these areas. 
+In this thesis I will try to find success in the algorithmic trading niche, also know as Algo-trading or automated trading. This is a type of trading which uses computer programs to execute trades in financial markets based on predefined rules or mathematical models.  Inside of algorithmic trading there are again many different types. Some examples are: statistical arbitrage, trend following, and High-Frequency Trading. In terms of logic all these are not related at all and strategies are often very complex in these areas. 
 
-My strategy is best descirbed as a statistical signal-based strategy. As I try to find a metric that shows statistical evidence on which I can capitalized on. In financial markets we can profit by betting on a volatilty change \footnote{a measure of how much and how quickly the price of a trading instrument fluctuates over time} or directional bias. Capitalizing from directional bias is as simple as buying if your directional bias positive and selling if we have a negative directional bias. (I am reffering to positive and negative returns)
+My strategy is best described as a statistical signal-based strategy. As I try to find a metric that shows statistical evidence on which I can capitalized on. In financial markets we can profit by betting on a volatility change \footnote{a measure of how much and how quickly the price of a trading instrument fluctuates over time} or directional bias. Capitalizing from directional bias is as simple as buying if your directional bias positive and selling if we have a negative directional bias. (I am referring to positive and negative returns)
 
 
 
@@ -201,12 +201,12 @@ To prevent any misunderstanding, I want to clarify that I chose Bitcoin as an un
 In the crypto market, real time and historical data is mostly free and accessible freely through public APIs. An API is a tool that allows programs to request and receive specific data from external services in this case, used to fetch real-time Bitcoin price and orderbook data from the coinbase crypto exchange. The data I based my strategy on is totaly free I just had to create my own timeseries in the traditional market I would have paid thousands of dollars for the same data.
 
 \subsubsection*{Modern API infrastructure}
-Some crypto exchanges offer modern API infastrucutre which allow to automate trading. The exchange I chose Hyperliquid offers world class python implementation of their API. This allows me to carry out trades with a simple self written python script that implements their python sdk. \footnote{A python sdk is a software development kit for python. It is a collection of tools and libraries that allow developers to interact with a specific API.}
+Some crypto exchanges offer modern API infrastructure which allow to automate trading. The exchange I chose Hyperliquid offers world class python implementation of their API. This allows me to carry out trades with a simple self written python script that implements their python sdk. \footnote{A python sdk is a software development kit for python. It is a collection of tools and libraries that allow developers to interact with a specific API.}
 
 
 
 \subsubsection*{Entry barriers}
-You can start trading crypto with as little as 10 USD no matter if the exchanges offers automated trading or just manual executed trades. While in the traditional market you need atleast 10'000 USD to open an account for on a broker which offers automated strategy access.
+You can start trading crypto with as little as 10 USD no matter if the exchanges offers automated trading or just manual executed trades. While in the traditional market you need at least 10'000 USD to open an account for on a broker which offers automated strategy access.
 
 
 
@@ -217,7 +217,7 @@ These features make Bitcoin an interesting asset, both from a technological and 
 
 \newpage
 \subsection{Efficient markets}
-Making consistent profits in financial markets is difficult. Prices move in ways that often seem unpredictable, and most traders both discretionary and systematic struggle to gain a lasting edge. \footnote{An edge is a consistent advantage over the market. It can be achieved through superior information, better analysis, or a unique trading approach.}One explination for this is the Efficient market hypothesis (EMH) which suggest that asset prices already reflect all available information, leaving little room for profitable oppertunities.
+Making consistent profits in financial markets is difficult. Prices move in ways that often seem unpredictable, and most traders both discretionary and systematic struggle to gain a lasting edge. \footnote{An edge is a consistent advantage over the market. It can be achieved through superior information, better analysis, or a unique trading approach.}One explanation for this is the Efficient market hypothesis (EMH) which suggest that asset prices already reflect all available information, leaving little room for profitable opportunities.
 
 
 
@@ -229,7 +229,7 @@ If the EMH were fully accurate in practice, then even the most advanced trading 
 
 To make things even better depending on where you trade market can change in efficient. But still some of the most valuable assets like stocks, gold and Bitcoin prices are a reflection of human emotion pricing in information. Especially now with Trump in office a lot of volatility came in with big opportunities
 
-Depending on the timeframe there are still a lot inefficiencies from which individuals can make a profit from. I will try to act on short term inefficiencies with my trading algorithm because I only have about one month for the live test and it would not make sense to run an algorithm which holds a trade over weeks and takes a trade every two months. In addition my initial idea when I started of with my matura thesis was already based on short term signals.
+Depending on the timeframe there are still a lot of inefficiencies from which individuals can make a profit from. I will try to act on short term inefficiencies with my trading algorithm because I only have about one month for the live test and it would not make sense to run an algorithm which holds a trade over weeks and takes a trade every two months. In addition my initial idea when I started of with my matura thesis was already based on short term signals.
 
 It is possible to make a profit in the markets but it is not easy, not for everyone, and needs dedication. I am pretty sure I am able to make a profit. The question rather is if it is possible to do so in the limited time I have and at what scale.
 
@@ -638,9 +638,9 @@ This approach helps us filter out market noise and identify real trading opportu
 \section{Results}
 
 The first version of my trading algorithm was started on the 20th of July 2025. On average there is one signal per week. So it took me a week to find out that my algorithm was not working correctly. The problem was that the signal calculation was not the same as in my backtest. My backtest codebase became so big that I mixed things up and implemented the wrong logic.
-I was not able to find the problem and kept updating it till I got about similair results as in my backtest. I will later dive deeper into why it is such a compleciated problem to implement the backtest logic into a live trading algorithm.
+I was not able to find the problem and kept updating it till I got about similar results as in my backtest. I will later dive deeper into why it is such a complicated problem to implement the backtest logic into a live trading algorithm.
 On 10th of August I was able to make the algorithm nearly match the entry signals of my backtest. I had to stop trying to make the algorithm work exactly as in my backtest as time was running out. 14h of August first few trades were taken. 
-I initaily started two algorithms but one was such a failure that I was forced to stop it.
+I initially started two algorithms but one was such a failure that I was forced to stop it.
 
 
 
@@ -705,4 +705,3 @@ The results from the robustness ch  eck reveal important differences between hol
 
 
 \end{document}
-
