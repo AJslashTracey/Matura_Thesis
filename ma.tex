@@ -644,7 +644,13 @@ I initaily started two algorithms but one was such a failure that I was forced t
 
 
 
+\subsection{Logic behind strategy}
+ 
 
+\subsection{Trend identification}
+
+
+\subsection{Extrem price identification}
 
 
 
@@ -664,6 +670,13 @@ The results I got before the implementation were the signals based on which I de
     \label{fig:backtest_results_before_implementation}
 \end{figure}
 
+In the figure you can see the results of backtest I ran with different parameter settings. 
+The results from the robustness ch  eck reveal important differences between holding periods. While both 60-minute and 120-minute horizons produced positive average returns, their behavior across sampling sizes diverged. At 60 minutes, average returns decreased as more trades were included, suggesting that profitability was driven by a smaller subset of favorable signals and may not generalize well. In contrast, the 120-minute horizon showed the opposite effect: returns increased with larger sampling sizes, indicating that the entry condition is more stable and benefits from scale. For holding periods of 240 minutes and longer, the strategy consistently generated negative results across all sample sizes. This confirms that the signal only provides an edge in the short term, and that profitability quickly decays if trades are held for too long. Taken together, these findings illustrate how robustness testing can uncover whether a strategy’s apparent profitability stems from a genuine, scalable edge (as in the 120-minute case) or from overfitting to a small number of lucky trades (as in the 60-minute case).
+
+ 
+
+
+
 
 \newpage
 
@@ -679,7 +692,6 @@ The results I got before the implementation were the signals based on which I de
 
 \newpage
 \section{Appendix}
-
 
 
 
